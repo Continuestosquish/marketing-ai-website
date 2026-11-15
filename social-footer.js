@@ -3,7 +3,7 @@ const css= document.createElement('style');css.textContent='.tw-social-footer{ba
 const foot=document.createElement('footer');foot.className='tw-social-footer';foot.setAttribute('data-tw-social-footer','');
 const inner=document.createElement('div');inner.className='tw-footer-inner';
 const left=document.createElement('div');
-const title=document.createElement('div');title.className='tw-footer-title';title.innerHTML='TRANWRECKS <span>STUDIO</span>';
+const title=document.createElement('div');title.className='tw-footer-title';title.innerHTML='<img src="./tranwrecks-studio-logo.svg" alt="Tranwrecks Studio" style="display:block;width:230px;max-width:100%;height:auto;border-radius:9px;background:#fff" />';
 const desc=document.createElement('p');desc.className='tw-footer-subtitle';desc.textContent='Connect with us · Official social channels coming soon';
 const chips=document.createElement('div');chips.className='tw-footer-socials';
 ['Instagram','TikTok','YouTube','Facebook'].forEach(name=>{const chip=document.createElement('span');chip.className='tw-social-chip';chip.textContent=name+' · ';const small=document.createElement('small');small.textContent='COMING SOON';chip.appendChild(small);chips.appendChild(chip)});
