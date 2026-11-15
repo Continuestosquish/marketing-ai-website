@@ -152,6 +152,19 @@ body{background:#fff}
 .review-copy-btn:disabled{opacity:.43;cursor:not-allowed}
 .review-preview-status{font-size:11px;color:#64758b;margin:10px 0 0}
 @media(max-width:800px){.reviews-examples{grid-template-columns:1fr}.review-workspace{grid-template-columns:1fr}.reviews-heading{display:block}.reviews-demo-note{display:inline-block;margin-top:15px;white-space:normal}}
+
+/* Continuous customer review ticker: only render authenticated/approved real reviews */
+.reviews-carousel-shell{width:100%;overflow:hidden;position:relative;margin-bottom:26px}
+.reviews-marquee{overflow:hidden;width:100%;mask-image:linear-gradient(to right,transparent,#000 7%,#000 93%,transparent);-webkit-mask-image:linear-gradient(to right,transparent,#000 7%,#000 93%,transparent)}
+.reviews-marquee-track{display:flex;align-items:stretch;width:max-content;gap:18px;animation:reviewsScroll 38s linear infinite;will-change:transform}
+.reviews-marquee-track .review-example{width:340px;flex:none;min-height:208px}
+.reviews-marquee:hover .reviews-marquee-track,.reviews-marquee:focus-within .reviews-marquee-track{animation-play-state:paused}
+.reviews-marquee[hidden]{display:none}
+.reviews-empty{border:1px dashed #d9dfeb;background:#fffdf7;border-radius:14px;padding:27px 30px;margin-top:4px}
+.reviews-empty strong{font-size:15px;color:#223249}
+.reviews-empty p{font-size:13px;color:#64748c;margin:8px 0 0}
+@keyframes reviewsScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.reviews-marquee-track{animation:none;will-change:auto}.reviews-marquee{overflow-x:auto;mask-image:none;-webkit-mask-image:none}}
 </style>
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Tranwrecks Studio">
@@ -244,13 +257,16 @@ body{background:#fff}
   </div></div></section>
 <section class="reviews-section" id="reviews" aria-labelledby="reviews-title">
  <div class="container">
-  <div class="reviews-heading"><div><p class="kicker">YOUR VOICE MATTERS</p><h2 id="reviews-title">Reviews & <em>feedback.</em></h2><p>See how a review could look, then write and preview your own feedback.</p></div><span class="reviews-demo-note">Examples only — not customer testimonials</span></div>
-  <div class="reviews-examples">
-   <article class="review-example"><div class="review-stars" aria-label="Example five-star rating">★★★★★</div><p>“I like how the campaign planning steps are organized. It makes getting started feel simple.”</p><div class="review-author"><span class="review-avatar" aria-hidden="true">EX</span><div><strong>Example review</strong><small>Illustrative sample · Not a real customer</small></div></div></article>
-   <article class="review-example"><div class="review-stars" aria-label="Example four-star rating">★★★★☆</div><p>“The content ideas are helpful starting points. I'd love to see even more customization.”</p><div class="review-author"><span class="review-avatar" aria-hidden="true">EX</span><div><strong>Example review</strong><small>Illustrative sample · Not a real customer</small></div></div></article>
-   <article class="review-example"><div class="review-stars" aria-label="Example five-star rating">★★★★★</div><p>“The hook generator gives me quick ideas to rewrite in my own brand voice.”</p><div class="review-author"><span class="review-avatar" aria-hidden="true">EX</span><div><strong>Example review</strong><small>Illustrative sample · Not a real customer</small></div></div></article>
+  <div class="reviews-heading"><div><p class="kicker">YOUR VOICE MATTERS</p><h2 id="reviews-title">Reviews & <em>feedback.</em></h2><p>Hear from real customers as soon as verified reviews are available.</p></div><span class="reviews-demo-note">Only genuine, verified feedback is published</span></div>
+ </div>
+ <div class="reviews-carousel-shell" aria-label="Customer reviews">
+  <div class="reviews-marquee" id="reviewsMarquee" aria-live="off">
+   <div class="reviews-marquee-track" id="reviewsMarqueeTrack"></div>
   </div>
-  <div class="review-workspace">
+  <div class="container"><div class="reviews-empty" id="reviewsEmpty"><strong>Be among the first to review Tranwrecks Studio.</strong><p>There are no verified customer reviews to display yet. The review carousel will move continuously once authentic reviews are published.</p></div></div>
+ </div>
+ <div class="container">
+ <div class="review-workspace">
    <form id="reviewForm" class="review-editor"><p class="kicker">SHARE YOUR THOUGHTS</p><h3>Write a review</h3><p>Preview your review before sharing it anywhere.</p><label for="reviewName">Display name</label><input id="reviewName" maxlength="40" placeholder="Your name" required>
     <label for="reviewRating">Rating</label><select id="reviewRating"><option value="5">★★★★★ — 5 stars</option><option value="4">★★★★☆ — 4 stars</option><option value="3">★★★☆☆ — 3 stars</option><option value="2">★★☆☆☆ — 2 stars</option><option value="1">★☆☆☆☆ — 1 star</option></select>
     <label for="reviewMessage">Your feedback</label><textarea id="reviewMessage" maxlength="500" rows="4" placeholder="Tell us what worked well or what we can improve..." required></textarea>
@@ -384,4 +400,33 @@ el('reviewCopy').addEventListener('click',async()=>{
 });
 })();
 </script>
-</body></html>
+
+<script>
+(()=>{'use strict';
+/* Populate only with reviewed, sourced customer submissions.
+   Each item: {name, rating, quote, source, url}. No fictional testimonials. */
+const verifiedReviews=[];
+const marquee=document.getElementById('reviewsMarquee');
+const track=document.getElementById('reviewsMarqueeTrack');
+const empty=document.getElementById('reviewsEmpty');
+if(!marquee||!track||!empty)return;
+const good=verifiedReviews.filter(r=>r&&typeof r.name==='string'&&r.name.trim()&&typeof r.quote==='string'&&r.quote.trim()&&r.source&&Number.isInteger(r.rating)&&r.rating>=1&&r.rating<=5);
+if(!good.length){marquee.hidden=true;empty.hidden=false;return;}
+empty.hidden=true;
+const makeCard=(r,duplicate)=>{
+ const card=document.createElement('article');card.className='review-example';if(duplicate)card.setAttribute('aria-hidden','true');
+ const stars=document.createElement('div');stars.className='review-stars';stars.textContent='★'.repeat(r.rating)+'☆'.repeat(5-r.rating);
+ const quote=document.createElement('p');quote.textContent='“'+r.quote+'”';
+ const author=document.createElement('div');author.className='review-author';
+ const avatar=document.createElement('span');avatar.className='review-avatar';avatar.textContent=r.name.slice(0,2).toUpperCase();
+ const info=document.createElement('div');const name=document.createElement('strong');name.textContent=r.name;
+ const source=document.createElement('small');source.textContent='Verified review · '+r.source;
+ info.append(name,source);author.append(avatar,info);card.append(stars,quote,author);
+ return card;
+};
+const cards=good.length===1?[good[0],good[0],good[0]]:good.length===2?[...good,...good]:good;
+for(const r of cards)track.append(makeCard(r,false));
+for(const r of cards)track.append(makeCard(r,true));
+marquee.hidden=false;
+})();
+</script></body></html>
