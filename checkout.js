@@ -9,6 +9,11 @@ const params=new URLSearchParams(location.search);
 let selected=Object.hasOwn(plans,params.get('plan'))?params.get('plan'):'starter';
 const base=String(window.TRANWRECKS_CHECKOUT_API||'').replace(/\/$/,'');
 const status=$('checkoutNotice');
+const destinations={campaign:'./campaign.html',book:'./playbook.html',recommend:'./index.html#recommend',tactics:'./index.html#library',analytics:'./index.html#analytics',platform:'./index.html#platform'};
+const wanted=params.get('next');
+const demo=destinations[wanted]||'./campaign.html';
+$('demoLink').setAttribute('href',demo);
+
 function display(){
 const p=plans[selected],list=$('options');list.replaceChildren();
 for(const [id,v] of Object.entries(plans)){const b=document.createElement('button');b.type='button';b.className='option';b.setAttribute('aria-pressed',String(id===selected));b.innerHTML='<span><strong>'+v.name+'</strong><small>'+v.allowance+' campaign blueprints / month (after activation)</small></span><span class="price">$'+(v.cents/100).toFixed(2)+'</span>';b.addEventListener('click',()=>{selected=id;history.replaceState(null,'','?plan='+encodeURIComponent(id));display()});list.appendChild(b);}
@@ -16,7 +21,7 @@ $('planName').textContent=p.name;$('allowance').textContent=p.allowance+' / mont
 $('features').replaceChildren();p.features.forEach(s=>{const li=document.createElement('li');li.textContent=s;$('features').appendChild(li)});
 }
 $('checkoutBtn').addEventListener('click',async ()=>{
- if(!base){status.textContent='Secure subscription checkout is being prepared. No payment has been taken. Please check back after activation.';status.focus();return;}
+ if(!base){status.textContent='Secure subscription checkout is not active. No payment has been taken. You may use the free development preview below to try the tool without a subscription.';return;}
  const btn=$('checkoutBtn');btn.disabled=true;btn.textContent='Opening Stripe…';
  try{
   const res=await fetch(base+'/api/billing/checkout',{method:'POST',headers:{'Content-Type':'application/json'},credentials:'include',body:JSON.stringify({plan:selected})});
