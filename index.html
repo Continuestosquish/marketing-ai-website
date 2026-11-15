@@ -163,36 +163,8 @@ body{background:#fff}
 .reviews-empty{border:1px dashed #d9dfeb;background:#fffdf7;border-radius:14px;padding:27px 30px;margin-top:4px}
 .reviews-empty strong{font-size:15px;color:#223249}
 .reviews-empty p{font-size:13px;color:#64748c;margin:8px 0 0}
-/* Six demo cards are repeated once: each stop advances one card + gap. */
-@keyframes reviewsScroll{
-  0%{transform:translateX(0)}
-  13%{transform:translateX(-8.333333%)}
-  14.5%{transform:translateX(-8.333333%)}
-  15%{transform:translateX(calc(-8.333333% + 6px))}
-  15.5%{transform:translateX(calc(-8.333333% - 3px))}
-  16.5%{transform:translateX(-8.333333%)}
-  30%{transform:translateX(-16.666667%)}
-  31.5%{transform:translateX(-16.666667%)}
-  32%{transform:translateX(calc(-16.666667% + 6px))}
-  32.5%{transform:translateX(calc(-16.666667% - 3px))}
-  33.5%{transform:translateX(-16.666667%)}
-  47%{transform:translateX(-25%)}
-  48.5%{transform:translateX(-25%)}
-  49%{transform:translateX(calc(-25% + 6px))}
-  49.5%{transform:translateX(calc(-25% - 3px))}
-  50.5%{transform:translateX(-25%)}
-  64%{transform:translateX(-33.333333%)}
-  65.5%{transform:translateX(-33.333333%)}
-  66%{transform:translateX(calc(-33.333333% + 6px))}
-  66.5%{transform:translateX(calc(-33.333333% - 3px))}
-  67.5%{transform:translateX(-33.333333%)}
-  81%{transform:translateX(-41.666667%)}
-  82.5%{transform:translateX(-41.666667%)}
-  83%{transform:translateX(calc(-41.666667% + 6px))}
-  83.5%{transform:translateX(calc(-41.666667% - 3px))}
-  84.5%{transform:translateX(-41.666667%)}
-  100%{transform:translateX(-50%)}
-}
+/* Smooth, continuous loop of duplicated demo review cards. */
+@keyframes reviewsScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @media(prefers-reduced-motion:reduce){.reviews-marquee-track{animation:none;will-change:auto}.reviews-marquee{overflow-x:auto;mask-image:none;-webkit-mask-image:none}}
 </style>
 <meta property="og:type" content="website">
