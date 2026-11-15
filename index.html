@@ -58,7 +58,7 @@
         <div class="library-footer"><button id="loadMore" class="btn btn-dark">Show more ideas ↓</button><p>Ideas are hypotheses until independently validated. Test what fits your audience.</p></div>
       </div></section>
 
-      <section class="section wrap planner-section" id="planner"><div class="section-heading"><div><p class="section-kicker">03 / CAMPAIGN BUILDER</p><h2>From idea to <em>action.</em></h2></div><p>Define your objective. Get a structured starting plan and build on it with your own expertise.</p></div>
+      <section class="section wrap planner-section" id="planner"><div class="section-heading"><div><p class="section-kicker">03 / CAMPAIGN BUILDER</p><h2>From idea to <em>action.</em></h2></div><p>Define your objective, pay securely, then receive one complete campaign blueprint.</p></div>
         <div class="planner-layout">
           <form id="plannerForm" class="planner-form">
             <div class="panel-heading"><span class="panel-icon">✳</span><div><h3>Your campaign brief</h3><p>Tell us what you're working on</p></div></div>
@@ -67,10 +67,10 @@
             <label>Primary objective<select id="objective"><option value="Awareness">Build brand awareness</option><option value="Lead Generation">Generate qualified leads</option><option value="Conversion">Increase conversions / sales</option><option value="Retention">Improve loyalty / retention</option><option value="Engagement">Build community / engagement</option></select></label>
             <label>Audience description<input id="audience" required maxlength="180" placeholder="e.g. Busy founders at growing companies" /></label>
             <div class="field-row"><label>Monthly budget ($)<input id="budget" type="number" min="0" step="100" value="3000" /></label><label>Campaign duration<select id="duration"><option value="30">30 days</option><option value="60">60 days</option><option value="90">90 days</option></select></label></div>
-            <button type="submit" class="btn btn-primary full">Generate strategy blueprint <span>↗</span></button>
-            <p class="form-note">Rule-based planning template, not live AI generation. No data is sent to a server.</p>
+            <button type="submit" class="btn btn-primary full" id="checkoutBtn">Unlock Campaign — $9.00 <span>↗</span></button>
+            <p class="form-note">One-time proposed price: $9.00 per campaign. Secure checkout with Stripe after activation. No charge until you confirm payment on Stripe. This is a structured, rule-based blueprint, not live generative AI. Campaign details are sent to the payment backend when checkout is enabled.</p>
           </form>
-          <div class="planner-output" id="plannerOutput"><div class="empty-state"><div class="empty-glyph">✧</div><span>YOUR NEXT BIG IDEA</span><h3>Every great campaign<br/>starts somewhere.</h3><p>Complete the brief and your marketing blueprint will appear here.</p><div class="empty-decor"><i></i><i></i><i></i></div></div></div>
+          <div class="planner-output" id="plannerOutput"><div class="empty-state"><div class="empty-glyph">✧</div><span>YOUR NEXT BIG IDEA</span><h3>Every great campaign<br/>starts somewhere.</h3><p>Complete the brief, check out securely, and your purchased campaign will appear here.</p><div class="empty-decor"><i></i><i></i><i></i></div></div></div>
         </div>
       </section>
 
@@ -83,6 +83,7 @@
     <footer class="footer wrap"><div><a class="brand footer-brand" href="#home"><span class="brand-mark">✳</span><span>MARKETING<span class="brand-ai">AI</span><small>STUDIO</small></span></a><p>Think strategically. Create boldly. Grow intelligently.</p></div><div class="footer-links"><a href="#platform">Platform</a><a href="#library">Tactics</a><a href="#planner">Builder</a><a href="#analytics">Analytics</a></div><div class="footer-bottom">© 2026 Marketing AI Studio. Prototype v3.0. All tactics require validation before deployment.</div></footer>
   </div>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script>window.MARKETING_PAYMENT_API = "";</script>
   <script src="tactics.js"></script>
   <script src="app.js"></script>
 </body>
