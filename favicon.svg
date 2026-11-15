@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+<title id="title">Tranwrecks Studio</title>
+<rect width="64" height="64" rx="15" fill="#101D34"/>
+<path d="M8 13h48" stroke="#FFD05A" stroke-width="3" stroke-linecap="round"/>
+<text x="32" y="45" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="34" text-anchor="middle" letter-spacing="-3" fill="#FFFFFF">TS</text>
+<circle cx="54" cy="52" r="4" fill="#FFD05A"/>
+</svg>
