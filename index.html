@@ -257,13 +257,13 @@ body{background:#fff}
   </div></div></section>
 <section class="reviews-section" id="reviews" aria-labelledby="reviews-title">
  <div class="container">
-  <div class="reviews-heading"><div><p class="kicker">YOUR VOICE MATTERS</p><h2 id="reviews-title">Reviews & <em>feedback.</em></h2><p>Hear from real customers as soon as verified reviews are available.</p></div><span class="reviews-demo-note">Only genuine, verified feedback is published</span></div>
+  <div class="reviews-heading"><div><p class="kicker">YOUR VOICE MATTERS</p><h2 id="reviews-title">Reviews & <em>feedback.</em></h2><p>See how customer feedback could look in our continuously scrolling review showcase.</p></div><span class="reviews-demo-note">DEMO REVIEWS · Fictional examples</span></div>
  </div>
  <div class="reviews-carousel-shell" aria-label="Customer reviews">
   <div class="reviews-marquee" id="reviewsMarquee" aria-live="off">
    <div class="reviews-marquee-track" id="reviewsMarqueeTrack"></div>
   </div>
-  <div class="container"><div class="reviews-empty" id="reviewsEmpty"><strong>Be among the first to review Tranwrecks Studio.</strong><p>There are no verified customer reviews to display yet. The review carousel will move continuously once authentic reviews are published.</p></div></div>
+  <div class="container"><div class="reviews-empty" id="reviewsEmpty"><strong>Be among the first to review Tranwrecks Studio.</strong><p>Sample reviews will appear here for design preview.</p></div></div>
  </div>
  <div class="container">
  <div class="review-workspace">
@@ -403,14 +403,20 @@ el('reviewCopy').addEventListener('click',async()=>{
 
 <script>
 (()=>{'use strict';
-/* Populate only with reviewed, sourced customer submissions.
-   Each item: {name, rating, quote, source, url}. No fictional testimonials. */
-const verifiedReviews=[];
+/* Fictional examples for visual demonstration; NOT actual customer endorsements. */
+const demoReviews=[
+ {name:'Alex M. (demo)',rating:5,quote:'The campaign steps are easy to follow. I can see how this would help organize a new launch.',source:'Fictional example'},
+ {name:'Jamie R. (demo)',rating:4,quote:'I like having a full month of content ideas in one place. The drafts are a good starting point.',source:'Fictional example'},
+ {name:'Taylor K. (demo)',rating:5,quote:'The marketing hook tool gives me a useful spark when I am not sure how to start a post.',source:'Fictional example'},
+ {name:'Morgan P. (demo)',rating:4,quote:'The tactic suggestions help me explore channels I might not have thought about.',source:'Fictional example'},
+ {name:'Casey L. (demo)',rating:5,quote:'A simple layout that makes planning feel less overwhelming. I especially like the guided questions.',source:'Fictional example'},
+ {name:'Jordan S. (demo)',rating:4,quote:'The playbook and calendar complement each other nicely for brainstorming campaigns.',source:'Fictional example'}
+];
 const marquee=document.getElementById('reviewsMarquee');
 const track=document.getElementById('reviewsMarqueeTrack');
 const empty=document.getElementById('reviewsEmpty');
 if(!marquee||!track||!empty)return;
-const good=verifiedReviews.filter(r=>r&&typeof r.name==='string'&&r.name.trim()&&typeof r.quote==='string'&&r.quote.trim()&&r.source&&Number.isInteger(r.rating)&&r.rating>=1&&r.rating<=5);
+const good=demoReviews.filter(r=>r&&typeof r.name==='string'&&r.name.trim()&&typeof r.quote==='string'&&r.quote.trim()&&r.source&&Number.isInteger(r.rating)&&r.rating>=1&&r.rating<=5);
 if(!good.length){marquee.hidden=true;empty.hidden=false;return;}
 empty.hidden=true;
 const makeCard=(r,duplicate)=>{
@@ -420,7 +426,7 @@ const makeCard=(r,duplicate)=>{
  const author=document.createElement('div');author.className='review-author';
  const avatar=document.createElement('span');avatar.className='review-avatar';avatar.textContent=r.name.slice(0,2).toUpperCase();
  const info=document.createElement('div');const name=document.createElement('strong');name.textContent=r.name;
- const source=document.createElement('small');source.textContent='Verified review · '+r.source;
+ const source=document.createElement('small');source.textContent='Sample review · Not a real customer';
  info.append(name,source);author.append(avatar,info);card.append(stars,quote,author);
  return card;
 };
