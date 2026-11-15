@@ -108,6 +108,19 @@ body{background:#fff}
 .footer-brand span{color:#FFD05A}
 .recommend-section .rec-apply{background:#246CF3;color:#fff;border-color:#246CF3}
 .recommend-section .rec-apply:hover{background:#1758D7}
+
+/* Locked membership-only features (payment enforcement requires deployed backend) */
+.locked-extras{padding:17px 0;background:#f7faff}
+.locked-extras.analytics-section{padding-bottom:75px}
+.locked-feature{display:flex;justify-content:space-between;align-items:center;gap:26px;padding:28px 33px;border:1px solid #dce4ee;background:#fff;border-radius:16px}
+.locked-copy{max-width:680px}
+.locked-copy .kicker{margin:0 0 10px;font-size:10px;letter-spacing:1.5px}
+.locked-copy h3{font-size:22px;letter-spacing:-.7px;margin:0 0 7px}
+.locked-copy p{font-size:13px;color:#6b7890;margin:0 0 11px}
+.locked-hint{font-size:11px;color:#9a6e2a;font-weight:650}
+.locked-action{white-space:nowrap;display:inline-flex;gap:9px;align-items:center;background:#101d34;color:white;font-size:12px;font-weight:750;border-radius:10px;padding:14px 17px;text-decoration:none}
+.locked-action:hover{background:#263e64}
+@media(max-width:700px){.locked-feature{display:block;padding:24px}.locked-action{margin-top:18px;white-space:normal}}
 </style>
 </head>
 <body>
@@ -175,16 +188,16 @@ body{background:#fff}
   <article class="price-card"><span class="plan-title">SUPER PRO PLUS</span><div class="price-line">$15.99 <small>/ month</small></div><p>For frequent planning and bigger creative workflows.</p><div class="pricing-divider"></div><ul><li>50 campaign blueprints / month</li><li>Marketing Playbook</li><li>30-Day Content Calendar</li><li>Higher-volume planning</li></ul><a href="./checkout.html?plan=super" class="btn btn-plan">Explore Super Pro ↗</a></article>
  </div><p class="pricing-note">Membership pricing is a preview. Secure Stripe subscription billing and paid access are not active yet. No payment is collected on this site.</p></div>
 </section>
-<section class="section-wrap extras-section" id="library">
- <div class="container"><details class="utility-details"><summary><span><span class="kicker">OPTIONAL EXPLORE MODE</span><strong>Browse all 120 marketing tactics</strong><small>Search and save ideas from the full library.</small></span><b class="expand">+</b></summary>
- <div class="library-toolbar"><div class="search-wrap"><span>⌕</span><input id="tacticSearch" type="search" placeholder="Search tactics, channels, objectives..." aria-label="Search marketing tactics"></div><select id="categoryFilter" aria-label="Filter by category"><option value="all">All categories</option></select><button id="resetFilters" type="button" class="filter-reset">Reset ↺</button></div>
- <div class="library-meta"><span id="resultsCount">Showing tactics</span><span><b id="savedCount">0</b> saved</span></div><div id="tacticGrid" class="tactic-grid"></div><div class="library-footer"><button id="loadMore" class="btn btn-dark" type="button">Show more ideas ↓</button></div>
- </details></div>
-</section>
-<section id="analytics" class="section-wrap analytics-section"><div class="container"><details class="utility-details"><summary><span><span class="kicker">THE NUMBERS</span><strong>Marketing performance calculator</strong><small>Calculate your campaign economics using your own data.</small></span><b class="expand">+</b></summary>
- <div class="analytics-layout"><div class="metrics-form"><h3>Your campaign numbers</h3><label>Ad spend ($)<input type="number" id="adSpend" min="0" value="2500"></label><label>Generated leads<input type="number" id="leads" min="0" value="100"></label><label>New customers<input type="number" id="customers" min="0" value="12"></label><label>Attributed revenue ($)<input type="number" id="revenue" min="0" value="9500"></label></div>
- <div class="metrics-results"><div class="metric-card"><span>Cost per lead</span><strong id="cpl">—</strong><small>Spend ÷ leads</small></div><div class="metric-card"><span>Acquisition cost</span><strong id="cac">—</strong><small>Spend ÷ customers</small></div><div class="metric-card"><span>Lead conversion</span><strong id="conversion">—</strong><small>Customers ÷ leads</small></div><div class="metric-card accent"><span>Return on ad spend</span><strong id="roas">—</strong><small>Revenue ÷ ad spend</small></div><p class="metrics-disclaimer">Illustrative calculator only. ROAS is not profit or ROI. Confirm attribution and source data.</p></div></div>
- </details></div></section>
+<section class="section-wrap extras-section locked-extras" id="library">
+  <div class="container"><div class="locked-feature">
+    <div class="locked-copy"><span class="kicker">MEMBERSHIP FEATURE</span><h3>Browse all 120 marketing tactics</h3><p>Search, discover and save tactics from the full marketing library.</p><span class="locked-hint">Included in membership plans · Account access coming soon</span></div>
+    <a class="locked-action" href="./checkout.html?source=tactics" aria-label="View plans for 120 marketing tactics"><span aria-hidden="true">🔒</span> View membership plans <span aria-hidden="true">↗</span></a>
+  </div></div></section>
+<section class="section-wrap analytics-section locked-extras" id="analytics">
+  <div class="container"><div class="locked-feature">
+    <div class="locked-copy"><span class="kicker">MEMBERSHIP FEATURE</span><h3>Marketing performance calculator</h3><p>Measure lead costs, acquisition costs, conversion rates and return on ad spend.</p><span class="locked-hint">Included in membership plans · Account access coming soon</span></div>
+    <a class="locked-action" href="./checkout.html?source=analytics" aria-label="View plans for marketing performance calculator"><span aria-hidden="true">🔒</span> View membership plans <span aria-hidden="true">↗</span></a>
+  </div></div></section>
 <section class="cta-section"><div class="container cta-content"><p class="kicker">READY WHEN YOU ARE</p><h2>Your next big idea<br>starts with a first step.</h2><p>Build a clearer marketing plan, one decision at a time.</p><a href="./checkout.html?next=campaign" class="btn btn-white">Get started ↗</a></div></section>
 </main>
 <footer class="site-footer"><div class="container footer-grid"><div><a href="./index.html" class="footer-brand">tranwrecks<span>studio.</span></a><div class="footer-tag">Random Digital Stuff</div><p>Good ideas, thoughtfully made.</p></div><div class="footer-links"><a href="#features">Features</a><a href="#pricing">Plans</a><a href="./help.html">Help Center</a><span title="Social channels launching soon">Instagram · TikTok · YouTube · Facebook — Coming soon</span></div><p class="legal">© 2026 Tranwrecks Studio. Prototype workspace.</p></div></footer>
@@ -195,35 +208,9 @@ window.MARKETING_TACTICS = [{"id":"T001","category":"Emotional Marketing","title
 
 </script>
 <script>
-(()=>{
-"use strict";
-const $=id=>document.getElementById(id), tactics=Array.isArray(window.MARKETING_TACTICS)?window.MARKETING_TACTICS:[];
-const escape=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-let saved=[];try{const data=JSON.parse(localStorage.getItem("marketingAI.saved")||"[]");if(Array.isArray(data))saved=data.filter(x=>typeof x==="string")}catch{}
-let pageSize=9;
-const filter=$("categoryFilter"),grid=$("tacticGrid"),search=$("tacticSearch");
-if(filter&&grid&&search){
- const categories=[...new Set(tactics.map(t=>t.category))];
- filter.innerHTML='<option value="all">All categories</option>'+categories.map(x=>'<option value="'+escape(x)+'">'+escape(x)+'</option>').join("")+'<option value="saved">Saved ideas</option>';
- function render(){
-  const q=search.value.trim().toLowerCase(),cat=filter.value;
-  const filtered=tactics.filter(t=>(cat==="all"||(cat==="saved"?saved.includes(t.id):t.category===cat))&&[t.title,t.category,t.objective,t.note,t.channel].join(" ").toLowerCase().includes(q));
-  const results=$("resultsCount"),counter=$("savedCount"),more=$("loadMore");
-  if(results)results.textContent="Showing "+Math.min(pageSize,filtered.length)+" of "+filtered.length+" tactics";
-  if(counter)counter.textContent=String(saved.length);
-  grid.innerHTML=filtered.slice(0,pageSize).map(t=>'<article class="tactic-card"><div class="tactic-card-head"><span class="tactic-id">'+escape(t.id)+'</span><button class="save-btn" type="button" data-save="'+escape(t.id)+'" aria-label="Save tactic">'+(saved.includes(t.id)?'★':'☆')+'</button></div><span class="tactic-pill">'+escape(t.category)+'</span><h3>'+escape(t.title)+'</h3><p>'+escape(t.note)+'</p><div class="tactic-foot"><span>'+escape(t.objective)+'</span><span>'+escape(t.channel)+'</span></div></article>').join("")||"<p>No matching ideas. Try another search.</p>";
-  if(more)more.hidden=pageSize>=filtered.length;
- }
- grid.addEventListener("click",e=>{const b=e.target.closest("[data-save]");if(!b)return;const id=b.dataset.save;saved=saved.includes(id)?saved.filter(x=>x!==id):[...saved,id];try{localStorage.setItem("marketingAI.saved",JSON.stringify(saved))}catch{}render()});
- search.addEventListener("input",()=>{pageSize=9;render()});
- filter.addEventListener("change",()=>{pageSize=9;render()});
- $("resetFilters")?.addEventListener("click",()=>{search.value="";filter.value="all";pageSize=9;render()});
- $("loadMore")?.addEventListener("click",()=>{pageSize+=9;render()});render();
-}
-const toggle=$("mobileMenu"),nav=$("nav");if(toggle&&nav){toggle.addEventListener("click",()=>{const open=toggle.getAttribute("aria-expanded")!=="true";toggle.setAttribute("aria-expanded",String(open));nav.classList.toggle("open",open)});nav.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{nav.classList.remove("open");toggle.setAttribute("aria-expanded","false")}))}
-const money=n=>new Intl.NumberFormat("en-US",{style:"currency",currency:"USD"}).format(n);
-function calculate(){const number=id=>Math.max(0,Number($(id)?.value)||0);const spend=number("adSpend"),leads=number("leads"),customers=number("customers"),revenue=number("revenue");if($("cpl"))$("cpl").textContent=leads?money(spend/leads):"—";if($("cac"))$("cac").textContent=customers?money(spend/customers):"—";if($("conversion"))$("conversion").textContent=leads?(100*customers/leads).toFixed(1)+"%":"—";if($("roas"))$("roas").textContent=spend?(revenue/spend).toFixed(2)+"×":"—"}
-["adSpend","leads","customers","revenue"].forEach(id=>$(id)?.addEventListener("input",calculate));calculate();
+(()=>{'use strict';
+const toggle=document.getElementById('mobileMenu'),nav=document.getElementById('nav');
+if(toggle&&nav){toggle.addEventListener('click',()=>{const open=toggle.getAttribute('aria-expanded')!=='true';toggle.setAttribute('aria-expanded',String(open));nav.classList.toggle('open',open)});nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');toggle.setAttribute('aria-expanded','false')}))}
 })();
 </script>
 <script>
