@@ -1,8 +1,8 @@
 (()=>{'use strict';
 const plans={
 starter:{name:'Starter',cents:499,allowance:3,features:['3 campaign blueprints per month (upon paid feature activation)','Marketing tactics and strategy basics','Performance calculator']},
-pro:{name:'Pro',cents:999,allowance:30,features:['30 campaign blueprints per month (upon paid feature activation)','Advanced tactic suggestions','Downloadable strategy reports']},
-super:{name:'Super Pro Plus',cents:1599,allowance:150,features:['150 campaign blueprints per month (upon paid feature activation)','Higher-volume planning','Premium marketing workflow designs']}
+pro:{name:'Pro',cents:999,allowance:15,features:['15 campaign blueprints per month (upon paid feature activation)','Advanced tactic suggestions','Downloadable strategy reports']},
+super:{name:'Super Pro Plus',cents:1599,allowance:50,features:['50 campaign blueprints per month (upon paid feature activation)','Higher-volume planning','Premium marketing workflow designs']}
 };
 const $=id=>document.getElementById(id);
 const params=new URLSearchParams(location.search);
