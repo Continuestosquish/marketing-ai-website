@@ -1,58 +1,79 @@
 (() => {
 'use strict';
-const t = window.MARKETING_TACTICS || [];
+const tactics = Array.isArray(window.MARKETING_TACTICS) ? window.MARKETING_TACTICS : [];
 const $ = id => document.getElementById(id);
-const safe = s => String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const goals = {
- awareness:{terms:['Emotional Marketing','Brand Positioning','Viral & Social','Influencer'],objectives:['Awareness','Discovery'],channels:['Social','Brand','Partner']},
- leads:{terms:['Content & Inbound','SEO & AI Discovery','Growth & Performance','AI & Predictive'],objectives:['Lead Generation','Qualified leads','Discovery'],channels:['Search','Content','SEO']},
- sales:{terms:['Growth & Performance','AI & Predictive','Experiential'],objectives:['Conversion','Experimentation'],channels:['Paid','Growth','AI']},
- engagement:{terms:['Viral & Social','Community & Advocacy','Experiential'],objectives:['Engagement'],channels:['Social','Community','Events']},
- retention:{terms:['Loyalty & CRM','Community & Advocacy','AI & Predictive'],objectives:['Retention'],channels:['CRM','Email','Community']}
+const html = s => String(s ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+const matches = {
+ awareness:{categories:['Emotional Marketing','Brand Positioning & Differentiation','Viral & Social Marketing','Influencer & Partnerships'],objectives:['Awareness','Discovery'],hints:['Social','Brand','Influencer']},
+ leads:{categories:['Content & Inbound Marketing','SEO & AI Discovery','Growth & Performance Marketing','AI & Predictive Marketing'],objectives:['Lead Generation','Qualified leads','Discovery'],hints:['Search','SEO','Content']},
+ sales:{categories:['Growth & Performance Marketing','AI & Predictive Marketing','Influencer & Partnerships','Brand Positioning & Differentiation'],objectives:['Conversion','Experimentation'],hints:['Growth','Paid','Partner']},
+ engagement:{categories:['Viral & Social Marketing','Community & Advocacy','Experiential & Guerrilla Marketing'],objectives:['Engagement'],hints:['Social','Community','Events']},
+ retention:{categories:['Loyalty & CRM','Community & Advocacy','AI & Predictive Marketing'],objectives:['Retention'],hints:['CRM','Email','Community']}
 };
-const score=(x,g,channels)=> {
- const p=goals[g]||goals.awareness;
- let s=0;
- p.terms.forEach((term,i)=>{if(x.category.toLowerCase().includes(term.toLowerCase()))s+=16-i*3});
- p.objectives.forEach(term=>{if(x.objective.toLowerCase().includes(term.toLowerCase()))s+=12});
- p.channels.forEach(term=>{if(x.channel.toLowerCase().includes(term.toLowerCase()))s+=4});
- channels.forEach(term=>{if(x.channel.toLowerCase().includes(term.toLowerCase()))s+=3});
- return s;
+const channelKeywords={all:[],Social:['Social','Video','Influencer','Community'],Search:['Search','SEO','Content'],Email:['Email','CRM','Lifecycle'],Video:['Video','Social','Creator'],Community:['Community','Events','Partner']};
+const weights={};
+const reason=(t,goal,channel)=> {
+ const cfg=matches[goal]||matches.awareness;
+ const cat=cfg.categories.find(x=>t.category.toLowerCase().includes(x.toLowerCase()));
+ const obj=cfg.objectives.some(x=>t.objective.toLowerCase()===x.toLowerCase());
+ const ch=(channelKeywords[channel]||[]).some(x=>(t.channel+' '+t.category).toLowerCase().includes(x.toLowerCase()));
+ if(cat&&ch)return 'Matches your goal and preferred channel';
+ if(cat)return 'Matches your campaign goal';
+ if(obj&&ch)return 'Supports your goal and distribution channel';
+ return 'Useful supporting tactic';
 };
-function current(){try{return JSON.parse(sessionStorage.getItem('mai.wizard.v1')||'{}')}catch{return {}}}
-function build(){
- const goal=$('recommendGoal').value;
- const channel=$('recommendChannel').value;
- const channels=channel==='all'?[]:[channel];
- const picks=t.map(x=>({...x,_score:score(x,goal,channels)})).sort((a,b)=>b._score-a._score || a.id.localeCompare(b.id)).slice(0,6);
- const box=$('recommendedGrid');
- box.replaceChildren();
- for(const [i,x] of picks.entries()){
-  const item=document.createElement('article');item.className='recommend-card';
-  item.innerHTML='<div class="rec-kicker">RECOMMENDATION '+(i+1)+' <span class="rec-score">Goal match</span></div><h3>'+safe(x.title)+'</h3><p>'+safe(x.note)+'</p><span class="rec-category">'+safe(x.category)+'</span><button type="button" class="rec-apply" data-recommend="'+safe(x.id)+'">Add to campaign ↗</button>';
-  box.appendChild(item);
- }
- $('recommendSummary').textContent='Recommended based on your selected marketing goal and channel. These are planning hypotheses, not measured performance predictions.';
+function rank(t,goal,channel){
+ const cfg=matches[goal]||matches.awareness;
+ const ci=cfg.categories.findIndex(x=>t.category.toLowerCase().includes(x.toLowerCase()));
+ const channelHit=(channelKeywords[channel]||[]).some(x=>(t.channel+' '+t.category).toLowerCase().includes(x.toLowerCase()));
+ return (ci>=0?80-ci*12:0)+(cfg.objectives.some(x=>t.objective.toLowerCase()===x.toLowerCase())?25:0)+(channelHit?45:0);
 }
-$('recommendGoal').addEventListener('change',build);
-$('recommendChannel').addEventListener('change',build);
-$('recommendedGrid').addEventListener('click',event=>{
- const b=event.target.closest('[data-recommend]'); if(!b)return;
- const obj=current(),id=b.dataset.recommend;
- const selected=Array.isArray(obj.tactics)?obj.tactics.filter(x=>typeof x==='string'):[];
- if(!selected.includes(id)&&selected.length<3)selected.push(id);
- obj.tactics=selected;
- const goalsMap={awareness:'Awareness',leads:'Leads',sales:'Sales',engagement:'Engagement',retention:'Retention'};
- obj.goal=goalsMap[$('recommendGoal').value];
- if($('recommendChannel').value!=='all'){
-  const value=$('recommendChannel').value;
-  obj.channels=Array.isArray(obj.channels)?obj.channels:[];
-  const channelMap={Social:'Instagram',Search:'Google Search',Email:'Email',Video:'YouTube',Community:'Facebook'};
-  const mapped=channelMap[value]||value;
-  if(!obj.channels.includes(mapped))obj.channels.push(mapped);
+function render(){
+ const goal=$('recommendGoal')?.value, channel=$('recommendChannel')?.value;
+ const grid=$('recommendedGrid'),summary=$('recommendSummary');
+ if(!goal||!channel||!grid||!summary)return;
+ if(!tactics.length){summary.textContent='Marketing tactics are currently unavailable. Refresh the page to try again.';grid.replaceChildren();return;}
+ const ranked=tactics.map(t=>({t,score:rank(t,goal,channel)}))
+ .sort((a,b)=>b.score-a.score||a.t.id.localeCompare(b.t.id));
+ // Diverse categories and genuine relevance.
+ const chosen=[],seen=new Set();
+ for(const item of ranked){
+  if(item.score<=0)break;
+  if(!seen.has(item.t.category)){chosen.push(item);seen.add(item.t.category)}
+  if(chosen.length===6)break;
  }
- try{sessionStorage.setItem('mai.wizard.v1',JSON.stringify(obj))}catch{}
- location.href='./campaign.html';
+ for(const item of ranked){
+  if(chosen.length===6)break;
+  if(!chosen.some(x=>x.t.id===item.t.id))chosen.push(item);
+ }
+ grid.replaceChildren();
+ for(const [i,{t,score}] of chosen.entries()){
+  const card=document.createElement('article');card.className='recommend-card';
+  const goalReason=reason(t,goal,channel);
+  card.innerHTML='<div class="rec-kicker"><span>TACTIC '+String(i+1).padStart(2,'0')+'</span><span class="rec-score">Recommended</span></div><h3>'+html(t.title)+'</h3><p>'+html(goalReason)+'. '+html(t.note)+'</p><span class="rec-category">'+html(t.category)+'</span><button class="rec-apply" type="button" data-recommend="'+html(t.id)+'">Use this tactic →</button>';
+  grid.appendChild(card);
+ }
+ summary.textContent='Showing '+chosen.length+' recommended tactics based on your goal and channel. Recommendations are rules-based suggestions, not guaranteed outcomes.';
+}
+function saveChoice(id){
+ const t=tactics.find(x=>x.id===id);if(!t)return;
+ let draft={};
+ try{draft=JSON.parse(sessionStorage.getItem('mai.wizard.v1')||'{}')||{}}catch{}
+ const old=Array.isArray(draft.tactics)?draft.tactics.filter(x=>typeof x==='string'):[];
+ draft.tactics=[id,...old.filter(x=>x!==id)].slice(0,3);
+ const names={awareness:'Awareness',leads:'Leads',sales:'Sales',engagement:'Engagement',retention:'Retention'};
+ draft.goal=names[$('recommendGoal').value]||'Awareness';
+ const channelMap={Social:'Instagram',Search:'Google Search',Email:'Email',Video:'YouTube',Community:'Facebook'};
+ const ch=channelMap[$('recommendChannel').value];
+ if(ch)draft.channels=[...new Set([...(Array.isArray(draft.channels)?draft.channels:[]),ch])];
+ try{sessionStorage.setItem('mai.wizard.v1',JSON.stringify(draft))}catch{}
+}
+$('recommendGoal')?.addEventListener('change',render);
+$('recommendChannel')?.addEventListener('change',render);
+$('recommendedGrid')?.addEventListener('click',e=>{
+ const button=e.target.closest('[data-recommend]');if(!button)return;
+ saveChoice(button.dataset.recommend);
+ location.assign('./checkout.html?next=campaign&source=recommendation');
 });
-build();
+render();
 })();
