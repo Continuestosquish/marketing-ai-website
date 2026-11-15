@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Create original opening hooks for ads, social posts and videos with Tranwrecks Studio.">
+<title>Marketing Hook Generator — Tranwrecks Studio</title>
+<style>
+:root{--navy:#101d34;--orange:#e79b23;--ink:#17243a;--muted:#6b7789}
+*{box-sizing:border-box}body{margin:0;background:#f7f9fc;color:var(--ink);font:15px/1.6 Inter,system-ui,-apple-system,Segoe UI,sans-serif}a{color:inherit;text-decoration:none}
+header{background:#fff;border-bottom:1px solid #e2e7ee}.header{width:min(1100px,calc(100% - 36px));margin:auto;display:flex;justify-content:space-between;align-items:center;gap:18px;padding:18px 0}.brand{font-weight:900;letter-spacing:-.5px}.brand span{color:var(--orange)}.brand small{display:block;letter-spacing:1px;font-size:10px;font-weight:650;color:#768296}.back{font-size:12px;font-weight:700;color:#526277}
+main{width:min(1100px,calc(100% - 36px));margin:0 auto;padding:57px 0 80px}.eyebrow{font-size:10px;color:#bd7914;letter-spacing:1.7px;font-weight:800}h1{font-size:clamp(36px,5.5vw,61px);letter-spacing:-2px;line-height:1.1;margin:14px 0 15px}h1 em{color:#d18b1c;font-family:Georgia,serif;font-weight:400}.intro{font-size:15px;color:var(--muted);max-width:710px;margin-bottom:35px}
+.layout{display:grid;grid-template-columns:335px minmax(0,1fr);gap:20px;align-items:start}.panel{background:#fff;border:1px solid #e0e5ec;border-radius:18px;padding:25px}.panel h2{margin:0 0 9px;font-size:20px;letter-spacing:-.5px}.panel p{font-size:13px;color:var(--muted)}label{display:block;font-size:12px;font-weight:750;margin:16px 0 7px}input,select,textarea{display:block;width:100%;padding:12px;border:1px solid #d6dfeb;border-radius:10px;font:inherit;color:#1d2a41;background:#fff}textarea{min-height:78px;resize:vertical}input:focus-visible,textarea:focus-visible,select:focus-visible,button:focus-visible{outline:3px solid #f2c45c;outline-offset:2px}button{border:0;border-radius:10px;padding:12px 16px;background:#f6b941;color:#29231b;font-weight:800;cursor:pointer;font:inherit}button.primary{width:100%;font-weight:850;margin-top:24px}button:hover{filter:brightness(.97)}button.secondary{background:#edf2f8;color:#2c3f5d}.actions{display:flex;flex-wrap:wrap;gap:10px}.placeholder{padding:65px 12px;text-align:center;color:#8591a0}.results{display:grid;gap:11px;margin-top:20px}.hook{border:1px solid #e3e7ee;background:#fdfefe;border-radius:12px;padding:17px}.hook-top{display:flex;justify-content:space-between;align-items:center;gap:12px;color:#a26d1e;font-size:10px;letter-spacing:1px;font-weight:800}.hook p{color:#1b2a42!important;font-size:15px!important;line-height:1.5;margin:10px 0 0}.hook button{background:transparent;border:1px solid #d6dfe9;padding:7px 11px;color:#566780;font-size:11px;font-weight:750}.hint{font-size:11px!important;color:#8490a0!important}footer{background:var(--navy);color:#c7d5e8;text-align:center;padding:24px;font-size:12px}footer a{text-decoration:underline}
+@media(max-width:800px){.layout{grid-template-columns:1fr}main{padding-top:37px}}@media(max-width:540px){.panel{padding:20px}.header{flex-wrap:wrap}.actions button{flex:1}}
+</style></head>
+<body><header><div class="header"><a href="./index.html" class="brand">tranwrecks<span>studio.</span><small>Random Digital Stuff</small></a><a class="back" href="./index.html">← Back to website</a></div></header>
+<main><div class="eyebrow">NEW / MARKETING CREATIVE TOOL</div><h1>Find your <em>hook.</em></h1><p class="intro">Generate 12 original, editable opening lines for social posts, short-form videos or ads. Choose your audience, product and tone to find a starting point that fits your message.</p>
+<div class="layout"><form id="form" class="panel"><h2>Tell us what you're making</h2><p>We'll build marketing hook drafts from the details you enter.</p>
+<label for="product">What are you promoting?</label><input id="product" maxlength="90" required placeholder="e.g. Handmade ceramic mugs">
+<label for="audience">Who is it for?</label><textarea id="audience" maxlength="170" required placeholder="e.g. Coffee lovers who enjoy intentional mornings"></textarea>
+<label for="benefit">What is the main benefit?</label><textarea id="benefit" maxlength="170" required placeholder="e.g. A more enjoyable daily coffee ritual"></textarea>
+<label for="channel">Content format</label><select id="channel"><option value="video">Short-form video</option><option value="social">Social media post</option><option value="ad">Digital advertisement</option><option value="email">Email subject line</option></select>
+<label for="tone">Writing tone</label><select id="tone"><option value="friendly">Friendly</option><option value="bold">Bold</option><option value="curious">Curious</option><option value="professional">Professional</option></select>
+<button type="submit" class="primary">Generate 12 hooks ↗</button><p class="hint">Rule-based writing tool, not a live AI model. Review each idea before publishing; no facts or results are verified automatically.</p></form>
+<section class="panel" aria-labelledby="resultsTitle"><h2 id="resultsTitle">Your hook ideas</h2><p id="summary">Complete the brief to generate hooks for your next campaign.</p><div id="actions" class="actions" hidden><button type="button" id="copyAll" class="secondary">Copy all hooks</button><button type="button" id="download" class="secondary">Download .txt</button></div><div id="empty" class="placeholder">Your 12 marketing hooks will appear here.</div><div id="results" class="results" aria-live="polite"></div></section>
+</div></main><footer>Tranwrecks Studio · Random Digital Stuff · <a href="./help.html">Help Center</a></footer>
+<script>
+(()=>{'use strict';
+const $=id=>document.getElementById(id);let hooks=[];
+const formats={video:'video',social:'post',ad:'ad',email:'email'};
+const clean=s=>String(s).trim().replace(/\s+/g,' ').replace(/[.!?]+$/,'');
+const make=(product,audience,benefit,tone,channel)=>{
+const prefix={friendly:'Hey',bold:'Stop scrolling',curious:'Ever wondered',professional:'A practical question'}[tone];
+const intros=[
+['QUESTION', 'What if '+product+' could help you '+benefit.toLowerCase()+'?'],
+['PROBLEM', 'If you are '+audience+', this might sound familiar.'],
+['CURIOSITY', 'What changes when you rethink '+product+'?'],
+['CONTRAST', 'It is not just about '+product+'. It is about '+benefit.toLowerCase()+'.'],
+['LIST', 'Three questions to ask before choosing '+product+'.'],
+['HOW-TO', 'Here is a simple way to explore '+benefit.toLowerCase()+'.'],
+['BOLD TAKE', prefix+': '+product+' deserves a closer look.'],
+['BEHIND THE SCENES', 'The thought behind '+product+' starts with one question: what helps '+audience+'?'],
+['MYTH VS FACT', 'A common assumption about '+product+' is worth questioning.'],
+['STORY', 'Picture this: '+audience+' discovering a new way to '+benefit.toLowerCase()+'.'],
+['COMPARISON', 'Before you choose '+product+', compare what matters most to you.'],
+['INVITATION', 'Looking for '+benefit.toLowerCase()+'? Explore what '+product+' could offer.']
+];
+return intros.map(([type,hook],i)=>({number:i+1,type,text:channel==='email'?hook.replace(/[.!?]+$/,''):hook}));
+};
+function render(){
+const root=$('results');root.replaceChildren();hooks.forEach(h=>{
+const el=document.createElement('article');el.className='hook';const top=document.createElement('div');top.className='hook-top';const title=document.createElement('span');title.textContent='HOOK '+String(h.number).padStart(2,'0')+' · '+h.type;const copy=document.createElement('button');copy.type='button';copy.textContent='Copy';copy.addEventListener('click',()=>copyText(h.text,copy));top.append(title,copy);const p=document.createElement('p');p.textContent=h.text;el.append(top,p);root.append(el);
+});
+$('empty').hidden=true;$('actions').hidden=false;
+}
+async function copyText(text,button){try{await navigator.clipboard.writeText(text);const label=button.textContent;button.textContent='Copied!';setTimeout(()=>button.textContent=label,1300)}catch{button.textContent='Copy unavailable'}}
+function allText(){return hooks.map(h=>'Hook '+h.number+' — '+h.type+'\n'+h.text).join('\n\n')}
+$('form').addEventListener('submit',e=>{e.preventDefault();const product=clean($('product').value),audience=clean($('audience').value),benefit=clean($('benefit').value);if(!product||!audience||!benefit)return;hooks=make(product,audience,benefit,$('tone').value,$('channel').value);$('summary').textContent='12 draft hooks for '+product+'. Customize each one to suit your brand and audience.';render()});
+$('copyAll').addEventListener('click',()=>{if(hooks.length)copyText(allText(),$('copyAll'))});
+$('download').addEventListener('click',()=>{if(!hooks.length)return;const url=URL.createObjectURL(new Blob([allText()],{type:'text/plain;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download='tranwrecks-marketing-hooks.txt';a.click();setTimeout(()=>URL.revokeObjectURL(url),1500)});
+})();
+</script>
+</body></html>
