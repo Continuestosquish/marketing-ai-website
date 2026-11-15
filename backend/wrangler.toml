@@ -1,0 +1,18 @@
+name = "tranwrecks-members-api"
+main = "worker.js"
+compatibility_date = "2026-11-15"
+
+# Create a real D1 database in Cloudflare first, then add its database_id below.
+# [[d1_databases]]
+# binding = "DB"
+# database_name = "tranwrecks-members"
+# database_id = "REPLACE_WITH_REAL_D1_DATABASE_ID"
+
+[vars]
+SITE_ORIGIN = "https://tranwrecks.com"
+BILLING_ENABLED = "false"
+
+# After creating Stripe products and recurring prices, set these via Worker vars:
+# STRIPE_PRICE_STARTER, STRIPE_PRICE_PRO, STRIPE_PRICE_SUPER.
+# Store secrets (STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET, AUTH_PEPPER)
+# using wrangler secret put, not in this file.
