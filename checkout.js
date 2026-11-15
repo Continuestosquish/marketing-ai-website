@@ -9,7 +9,7 @@ const params=new URLSearchParams(location.search);
 let selected=Object.hasOwn(plans,params.get('plan'))?params.get('plan'):'starter';
 const base=String(window.TRANWRECKS_CHECKOUT_API||'').replace(/\/$/,'');
 const status=$('checkoutNotice');
-const destinations={campaign:'./campaign.html',book:'./playbook.html',calendar:'./content-calendar.html',hooks:'./hook-generator.html',recommend:'./index.html#recommend',tactics:'./index.html#library',analytics:'./index.html#analytics',platform:'./index.html#platform'};
+const destinations={campaign:'./campaign.html',book:'./playbook.html',calendar:'./content-calendar.html',hooks:'./hook-generator.html',recommend:'./#recommend',tactics:'./#library',analytics:'./#analytics',platform:'./#platform'};
 const wanted=params.get('next');
 const demo=destinations[wanted]||'./campaign.html';
 $('demoLink').setAttribute('href',demo);
