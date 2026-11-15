@@ -121,6 +121,37 @@ body{background:#fff}
 .locked-action{white-space:nowrap;display:inline-flex;gap:9px;align-items:center;background:#101d34;color:white;font-size:12px;font-weight:750;border-radius:10px;padding:14px 17px;text-decoration:none}
 .locked-action:hover{background:#263e64}
 @media(max-width:700px){.locked-feature{display:block;padding:24px}.locked-action{margin-top:18px;white-space:normal}}
+
+/* Customer-feedback preview: examples are explicitly fictional */
+.reviews-section{padding:82px 0;background:#fff;scroll-margin-top:22px}
+.reviews-heading{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:27px}
+.reviews-heading h2{font-size:clamp(30px,3.5vw,43px);margin:0 0 12px}
+.reviews-heading p:not(.kicker){font-size:14px;color:#68778d;margin:0}
+.reviews-demo-note{font-size:11px;color:#906b2e;background:#fff6e4;padding:10px 13px;border-radius:20px;white-space:nowrap}
+.reviews-examples{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
+.review-example,.review-preview-card{border:1px solid #e4e8ef;border-radius:16px;padding:23px;background:#fff;box-shadow:0 7px 23px #1e2d4608}
+.review-stars{letter-spacing:3px;color:#e9a62c;font-size:18px;white-space:nowrap}
+.review-example>p,.review-preview-card>p{margin:13px 0 23px;color:#39465b;font-size:14px;min-height:66px;line-height:1.7}
+.review-author{display:flex;gap:11px;align-items:center}
+.review-avatar{width:39px;height:39px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;background:#fff1cd;color:#936417;font-size:11px;font-weight:850;flex-shrink:0}
+.review-author strong{display:block;font-size:12px}.review-author small{display:block;font-size:10px;color:#8490a2}
+.review-workspace{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:30px;align-items:stretch}
+.review-editor,.review-preview-panel{border-radius:18px;padding:27px;border:1px solid #e4e9f0;background:#f8faff}
+.review-editor h3,.review-preview-panel h3{margin:0 0 9px;font-size:24px}
+.review-editor>p:not(.kicker){font-size:13px;color:#69788d;margin:0 0 13px}
+.review-editor label{display:block;font-size:12px;font-weight:800;margin:13px 0 5px}
+.review-editor input,.review-editor select,.review-editor textarea{display:block;width:100%;border:1px solid #d7deea;border-radius:9px;padding:11px 12px;font:inherit;font-size:13px;color:#243148;background:#fff}
+.review-editor textarea{resize:vertical}
+.review-preview-btn,.review-copy-btn{border:0;border-radius:10px;padding:13px 16px;font-weight:800;font-size:12px;cursor:pointer;margin-top:18px}
+.review-preview-btn{background:linear-gradient(110deg,#f5a72c,#ffd05a);color:#28221a;width:100%}
+.review-editor>small{display:block;margin-top:12px;color:#7d899c;font-size:11px}
+.review-preview-panel{background:#fffdf7}
+.review-preview-card{margin-top:19px;background:#fff}
+.review-preview-card>p{overflow-wrap:anywhere}
+.review-copy-btn{background:#101d34;color:#fff}
+.review-copy-btn:disabled{opacity:.43;cursor:not-allowed}
+.review-preview-status{font-size:11px;color:#64758b;margin:10px 0 0}
+@media(max-width:800px){.reviews-examples{grid-template-columns:1fr}.review-workspace{grid-template-columns:1fr}.reviews-heading{display:block}.reviews-demo-note{display:inline-block;margin-top:15px;white-space:normal}}
 </style>
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Tranwrecks Studio">
@@ -140,7 +171,7 @@ body{background:#fff}
  <div class="container header-row">
  <a href="./" class="brand" aria-label="Tranwrecks Studio homepage"><span class="brand-name">tranwrecks<span>studio.</span></span><span class="brand-tagline">Random Digital Stuff</span></a>
  <nav class="nav" id="nav" aria-label="Main menu">
-   <a href="#features">Features</a><a href="#recommend">Explore ideas</a><a href="#pricing">Pricing</a><a href="./help.html">Help</a>
+   <a href="#features">Features</a><a href="#recommend">Explore ideas</a><a href="#pricing">Pricing</a><a href="#reviews">Reviews</a><a href="./help.html">Help</a>
  </nav>
  <div class="header-actions"><a class="header-signin" href="./checkout.html">Memberships</a><a class="btn btn-primary btn-small" href="./checkout.html?next=campaign">Get started <span aria-hidden="true">↗</span></a></div>
  <button id="mobileMenu" type="button" aria-label="Toggle menu" aria-controls="nav" aria-expanded="false" class="mobile-menu">☰</button>
@@ -211,9 +242,27 @@ body{background:#fff}
     <div class="locked-copy"><span class="kicker">MEMBERSHIP FEATURE</span><h3>Marketing performance calculator</h3><p>Measure lead costs, acquisition costs, conversion rates and return on ad spend.</p><span class="locked-hint">Included in membership plans · Account access coming soon</span></div>
     <a class="locked-action" href="./checkout.html?source=analytics" aria-label="View plans for marketing performance calculator"><span aria-hidden="true">🔒</span> View membership plans <span aria-hidden="true">↗</span></a>
   </div></div></section>
+<section class="reviews-section" id="reviews" aria-labelledby="reviews-title">
+ <div class="container">
+  <div class="reviews-heading"><div><p class="kicker">YOUR VOICE MATTERS</p><h2 id="reviews-title">Reviews & <em>feedback.</em></h2><p>See how a review could look, then write and preview your own feedback.</p></div><span class="reviews-demo-note">Examples only — not customer testimonials</span></div>
+  <div class="reviews-examples">
+   <article class="review-example"><div class="review-stars" aria-label="Example five-star rating">★★★★★</div><p>“I like how the campaign planning steps are organized. It makes getting started feel simple.”</p><div class="review-author"><span class="review-avatar" aria-hidden="true">EX</span><div><strong>Example review</strong><small>Illustrative sample · Not a real customer</small></div></div></article>
+   <article class="review-example"><div class="review-stars" aria-label="Example four-star rating">★★★★☆</div><p>“The content ideas are helpful starting points. I'd love to see even more customization.”</p><div class="review-author"><span class="review-avatar" aria-hidden="true">EX</span><div><strong>Example review</strong><small>Illustrative sample · Not a real customer</small></div></div></article>
+   <article class="review-example"><div class="review-stars" aria-label="Example five-star rating">★★★★★</div><p>“The hook generator gives me quick ideas to rewrite in my own brand voice.”</p><div class="review-author"><span class="review-avatar" aria-hidden="true">EX</span><div><strong>Example review</strong><small>Illustrative sample · Not a real customer</small></div></div></article>
+  </div>
+  <div class="review-workspace">
+   <form id="reviewForm" class="review-editor"><p class="kicker">SHARE YOUR THOUGHTS</p><h3>Write a review</h3><p>Preview your review before sharing it anywhere.</p><label for="reviewName">Display name</label><input id="reviewName" maxlength="40" placeholder="Your name" required>
+    <label for="reviewRating">Rating</label><select id="reviewRating"><option value="5">★★★★★ — 5 stars</option><option value="4">★★★★☆ — 4 stars</option><option value="3">★★★☆☆ — 3 stars</option><option value="2">★★☆☆☆ — 2 stars</option><option value="1">★☆☆☆☆ — 1 star</option></select>
+    <label for="reviewMessage">Your feedback</label><textarea id="reviewMessage" maxlength="500" rows="4" placeholder="Tell us what worked well or what we can improve..." required></textarea>
+    <button type="submit" class="review-preview-btn">Preview my review ↗</button><small>Preview only. This site does not yet collect or publish reviews.</small>
+   </form>
+   <div class="review-preview-panel" aria-live="polite"><p class="kicker">LIVE PREVIEW</p><h3>Here's how it will look</h3><div class="review-preview-card"><div id="reviewPreviewStars" class="review-stars">★★★★★</div><p id="reviewPreviewText">Your feedback will appear here when you preview your review.</p><div class="review-author"><span id="reviewPreviewAvatar" class="review-avatar" aria-hidden="true">YOU</span><div><strong id="reviewPreviewName">Your name</strong><small>Private preview · Not published</small></div></div></div><button id="reviewCopy" type="button" class="review-copy-btn" disabled>Copy review text</button><p id="reviewPreviewStatus" class="review-preview-status" role="status"></p></div>
+  </div>
+ </div>
+</section>
 <section class="cta-section"><div class="container cta-content"><p class="kicker">READY WHEN YOU ARE</p><h2>Your next big idea<br>starts with a first step.</h2><p>Build a clearer marketing plan, one decision at a time.</p><a href="./checkout.html?next=campaign" class="btn btn-white">Get started ↗</a></div></section>
 </main>
-<footer class="site-footer"><div class="container footer-grid"><div><a href="./" class="footer-brand">tranwrecks<span>studio.</span></a><div class="footer-tag">Random Digital Stuff</div><p>Good ideas, thoughtfully made.</p></div><div class="footer-links"><a href="#features">Features</a><a href="#pricing">Plans</a><a href="./help.html">Help Center</a><span title="Social channels launching soon">Instagram · TikTok · YouTube · Facebook — Coming soon</span></div><p class="legal">© 2026 Tranwrecks Studio. Prototype workspace.</p></div></footer>
+<footer class="site-footer"><div class="container footer-grid"><div><a href="./" class="footer-brand">tranwrecks<span>studio.</span></a><div class="footer-tag">Random Digital Stuff</div><p>Good ideas, thoughtfully made.</p></div><div class="footer-links"><a href="#features">Features</a><a href="#pricing">Plans</a><a href="#reviews">Reviews</a><a href="./help.html">Help Center</a><span title="Social channels launching soon">Instagram · TikTok · YouTube · Facebook — Coming soon</span></div><p class="legal">© 2026 Tranwrecks Studio. Prototype workspace.</p></div></footer>
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
 <script>
@@ -305,6 +354,34 @@ $('recommendedGrid')?.addEventListener('click',e=>{
  location.assign('./checkout.html?next=campaign&source=recommendation');
 });
 render();
+})();
+</script>
+
+<script>
+(()=>{'use strict';
+const form=document.getElementById('reviewForm');
+if(!form)return;
+const el=id=>document.getElementById(id);
+let copyValue='';
+form.addEventListener('submit',event=>{
+ event.preventDefault();
+ const name=el('reviewName').value.trim(),message=el('reviewMessage').value.trim();
+ if(!name||!message){form.reportValidity();return;}
+ const rating=Number(el('reviewRating').value);
+ const stars='★'.repeat(rating)+'☆'.repeat(5-rating);
+ el('reviewPreviewStars').textContent=stars;
+ el('reviewPreviewText').textContent='“'+message+'”';
+ el('reviewPreviewName').textContent=name;
+ el('reviewPreviewAvatar').textContent=name.slice(0,2).toUpperCase();
+ copyValue=stars+'\n'+message+'\n— '+name;
+ el('reviewCopy').disabled=false;
+ el('reviewPreviewStatus').textContent='Preview updated. Your feedback has not been submitted or published.';
+});
+el('reviewCopy').addEventListener('click',async()=>{
+ if(!copyValue)return;
+ try{await navigator.clipboard.writeText(copyValue);el('reviewPreviewStatus').textContent='Review copied. This is still a private preview.';}
+ catch{el('reviewPreviewStatus').textContent='Copy is unavailable in this browser. You can select the preview text manually.';}
+});
 })();
 </script>
 </body></html>
