@@ -1,0 +1,12 @@
+(()=>{'use strict';if(document.querySelector('[data-tw-social-footer]'))return;
+const css= document.createElement('style');css.textContent='.tw-social-footer{background:#0b1426;color:#edf3fd;border-top:1px solid #3e526e;padding:34px 22px;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif}.tw-footer-inner{max-width:1120px;margin:0 auto;display:flex;justify-content:space-between;gap:24px;align-items:start;flex-wrap:wrap}.tw-footer-title{font-weight:850;font-size:17px;letter-spacing:-.4px}.tw-footer-title span{color:#fa9f75}.tw-footer-subtitle{font-size:12px;color:#adbed4;margin:9px 0}.tw-footer-socials{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}.tw-social-chip{border:1px solid #516580;background:#16253c;padding:9px 12px;border-radius:9px;display:inline-flex;gap:8px;align-items:center;font-size:12px;color:#d6e2f3}.tw-social-chip small{font-size:10px;color:#ffae88}.tw-social-help{color:#dceaff;font-size:13px;text-decoration:underline;text-underline-offset:3px}.tw-footer-meta{font-size:11px;color:#a8b7cb;margin-top:12px}';document.head.appendChild(css);
+const foot=document.createElement('footer');foot.className='tw-social-footer';foot.setAttribute('data-tw-social-footer','');
+const inner=document.createElement('div');inner.className='tw-footer-inner';
+const left=document.createElement('div');
+const title=document.createElement('div');title.className='tw-footer-title';title.innerHTML='TRANWRECKS <span>STUDIO</span>';
+const desc=document.createElement('p');desc.className='tw-footer-subtitle';desc.textContent='Connect with us · Official social channels coming soon';
+const chips=document.createElement('div');chips.className='tw-footer-socials';
+['Instagram','TikTok','YouTube','Facebook'].forEach(name=>{const chip=document.createElement('span');chip.className='tw-social-chip';chip.textContent=name+' · ';const small=document.createElement('small');small.textContent='COMING SOON';chip.appendChild(small);chips.appendChild(chip)});
+left.append(title,desc,chips);
+const right=document.createElement('div');const help=document.createElement('a');help.href='./help.html';help.textContent='Help Center & FAQ →';help.className='tw-social-help';const meta=document.createElement('div');meta.className='tw-footer-meta';meta.textContent='We will add verified social links when the accounts are launched.';right.append(help,meta);inner.append(left,right);foot.append(inner);document.body.append(foot);
+})();
