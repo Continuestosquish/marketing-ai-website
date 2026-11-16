@@ -244,6 +244,51 @@ body{background:#fff}
 #library .locked-mock-cards>div,#analytics .locked-analytics-mock>div{text-align:center}
 #library .locked-overlay,#analytics .locked-overlay{left:0;right:0;align-items:center;text-align:center}
 #library .locked-overlay .locked-action,#analytics .locked-overlay .locked-action{justify-content:center}
+
+/* First-value experience: real interactive free mini-planner, distinct from subscription tools */
+.free-demo-section{padding:78px 0 87px;background:linear-gradient(160deg,#fffaf1 0%,#fff 38%,#f5f9ff 100%);border-top:1px solid #f4eddf;border-bottom:1px solid #e9edf4;scroll-margin-top:15px}
+.free-demo-intro{display:flex;align-items:end;justify-content:space-between;gap:25px;margin-bottom:30px}
+.free-demo-intro h2{font-size:clamp(31px,3.8vw,48px);line-height:1.17;margin:0 0 15px}
+.free-demo-intro p:not(.kicker){color:#667589;max-width:660px;font-size:14px;margin:0}
+.free-demo-pill{border:1px solid #f2d393;background:#fff5dc;color:#a66b13;padding:10px 14px;border-radius:30px;font-size:10px;letter-spacing:.5px;font-weight:900;white-space:nowrap;margin-bottom:8px}
+.free-demo-layout{display:grid;grid-template-columns:minmax(280px,.83fr) minmax(0,1.17fr);gap:18px;align-items:stretch}
+.free-demo-form,.free-demo-output{border:1px solid #e0e7ee;background:white;border-radius:20px;box-shadow:0 15px 35px #1c2e4309;padding:27px}
+.free-demo-form-top,.free-demo-output-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:23px}
+.free-demo-step{font-size:10px;letter-spacing:1.2px;font-weight:900;color:#af7621}
+.free-demo-time,.free-demo-state{font-size:10px;color:#929eae;font-weight:700}
+.free-demo-form label{display:block;font-size:12px;font-weight:800;color:#344258;margin:17px 0 7px}
+.free-demo-form input,.free-demo-form select{width:100%;display:block;min-height:45px;border:1px solid #d8e1ed;border-radius:10px;background:#fbfcff;color:#24364c;font:inherit;font-size:13px;padding:11px 12px;outline-color:#e7ac43}
+.free-demo-form input:focus,.free-demo-form select:focus{border-color:#f4b43e;box-shadow:0 0 0 3px #f6c65c27}
+.free-demo-generate{display:flex;gap:9px;justify-content:center;align-items:center;width:100%;min-height:49px;background:linear-gradient(112deg,#f5a72c,#ffd05a);color:#241f18;border:0;border-radius:10px;padding:12px 15px;font-size:13px;font-weight:900;margin-top:24px;cursor:pointer;transition:transform .16s,filter .16s}
+.free-demo-generate:hover{transform:translateY(-2px);filter:saturate(1.12)}
+.free-demo-disclaimer{font-size:11px;line-height:1.6;color:#8c99a8;margin:13px 0 0}
+.free-demo-output{display:flex;flex-direction:column}
+.free-demo-empty{min-height:278px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px 25px}
+.free-demo-spark{height:66px;width:66px;background:#fff4dc;border-radius:21px;display:flex;align-items:center;justify-content:center;font-size:42px;color:#e3a139;transform:rotate(-10deg);margin-bottom:23px}
+.free-demo-empty h3{font-size:22px;letter-spacing:-.6px;margin:0 0 9px}
+.free-demo-empty p{max-width:310px;color:#8793a4;font-size:12px;line-height:1.7;margin:0}
+.free-demo-ghost{width:min(280px,100%);margin-top:22px;display:grid;gap:8px}
+.free-demo-ghost span{height:9px;border-radius:10px;background:#f0f3f8}.free-demo-ghost span:nth-child(2){width:80%;margin:auto}.free-demo-ghost span:nth-child(3){width:48%;margin:auto}
+.free-demo-result[hidden],.free-demo-empty[hidden]{display:none}
+.free-demo-success{color:#1f876e;background:#e7f8f1;border-radius:30px;display:inline-flex;align-items:center;gap:7px;padding:5px 10px;font-size:10px;font-weight:850}
+.free-demo-success span{font-weight:900;font-size:12px}
+.free-demo-result h3{font-size:21px;margin:12px 0 18px;letter-spacing:-.6px;overflow-wrap:anywhere}
+.free-demo-output-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.free-demo-result-card{background:#f8faff;border:1px solid #e6edf6;border-radius:12px;padding:14px 15px;min-width:0}
+.free-demo-result-card span{font-size:10px;color:#a5772b;letter-spacing:.9px;font-weight:900}
+.free-demo-result-card p{font-size:12px;color:#3a495f;line-height:1.65;margin:8px 0 0;overflow-wrap:anywhere}
+.free-demo-result-actions{display:flex;align-items:center;gap:14px;margin-top:16px;flex-wrap:wrap}
+.free-demo-copy{border:0;border-radius:9px;padding:12px 15px;font-size:12px;font-weight:850;background:#101d34;color:#fff;cursor:pointer}
+.free-demo-copy:hover{background:#253d60}
+.free-demo-reset{border:0;background:transparent;color:#607187;font-size:12px;font-weight:800;cursor:pointer;padding:8px 2px}
+.free-demo-copy-status{color:#278268;font-size:11px;margin:8px 0 0;min-height:10px}
+.free-demo-upgrade{border-top:1px solid #edf0f6;margin-top:auto;padding-top:19px;display:flex;align-items:center;gap:12px}
+.free-demo-upgrade-icon{height:36px;width:36px;flex:none;border-radius:11px;background:#fff0c9;color:#c48722;display:flex;align-items:center;justify-content:center;font-size:19px}
+.free-demo-upgrade>div{flex:1;min-width:0}
+.free-demo-upgrade strong{font-size:12px}.free-demo-upgrade p{font-size:11px;color:#8492a4;margin:3px 0 0;line-height:1.5}
+.free-demo-upgrade-link{font-size:11px;font-weight:850;white-space:nowrap;color:#855a17;text-decoration:underline;text-underline-offset:3px}
+@media(max-width:870px){.free-demo-layout{grid-template-columns:1fr}.free-demo-intro{align-items:start}.free-demo-output{min-height:350px}}
+@media(max-width:600px){.free-demo-section{padding:58px 0}.free-demo-intro{display:block}.free-demo-pill{display:inline-block;margin-top:18px}.free-demo-form,.free-demo-output{padding:22px}.free-demo-output-grid{grid-template-columns:1fr}.free-demo-upgrade{flex-wrap:wrap}.free-demo-upgrade-link{margin-left:48px}}
 </style>
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Tranwrecks Studio">
@@ -275,7 +320,7 @@ body{background:#fff}
  <div class="eyebrow"><span class="mini-dot"></span> YOUR CREATIVE MARKETING WORKSPACE</div>
  <h1 id="hero-title">Good ideas.<br><span>Better marketing.</span></h1>
  <p class="hero-desc">From the first spark to the final plan. Build campaigns, find smart tactics, and organize your content without the overwhelm.</p>
- <div class="hero-buttons"><a class="btn btn-primary" href="./checkout.html?next=campaign">Create a campaign <span aria-hidden="true">↗</span></a><a class="btn btn-secondary" href="#features">Explore the tools <span aria-hidden="true">↓</span></a></div>
+ <div class="hero-buttons"><a class="btn btn-primary" href="./checkout.html?next=campaign">Create a campaign <span aria-hidden="true">↗</span></a><a class="btn btn-secondary" href="#try-free">Try free demo <span aria-hidden="true">↓</span></a></div>
  <div class="hero-mini"><span><b>120</b> practical tactics</span><i></i><span><b>30-day</b> content planning</span><i></i><span><b>10</b> book chapters</span></div>
  </div>
  <div class="hero-preview" aria-label="Campaign planning example">
@@ -286,6 +331,44 @@ body{background:#fff}
  <div class="preview-current"><span class="step-num">03</span><span><b>Build your strategy</b><small>Explore creative directions</small></span><span class="preview-arrow">↗</span></div></div>
  <div class="preview-progress"><span></span></div><div class="preview-progress-text"><span>YOUR NEXT IDEA STARTS HERE</span><b>CREATING IMPACT</b></div>
  </div></div>
+</section>
+<section class="free-demo-section" id="try-free" aria-labelledby="freeDemoTitle">
+ <div class="container">
+  <div class="free-demo-intro">
+   <div><p class="kicker"><span class="mini-dot"></span> A LITTLE PREVIEW, ON US</p><h2 id="freeDemoTitle">Try your first marketing idea.<br><em>Free. Right now.</em></h2><p>Tell us what you're working on. Get a mini campaign idea in seconds — no account, no credit card, no pressure.</p></div>
+   <div class="free-demo-pill">✦ FREE INTERACTIVE DEMO</div>
+  </div>
+  <div class="free-demo-layout">
+   <form class="free-demo-form" id="freeIdeaForm">
+    <div class="free-demo-form-top"><span class="free-demo-step">01 / YOUR BRIEF</span><span class="free-demo-time">About 30 seconds</span></div>
+    <label for="freeBusiness">What are you promoting?</label>
+    <input id="freeBusiness" required maxlength="85" placeholder="e.g. A handmade candle shop" autocomplete="off">
+    <label for="freeAudience">Who's your ideal customer?</label>
+    <input id="freeAudience" required maxlength="100" placeholder="e.g. People who love cozy home decor" autocomplete="off">
+    <label for="freeGoal">What's your main goal?</label>
+    <select id="freeGoal"><option value="awareness">Get noticed</option><option value="leads">Get more inquiries</option><option value="sales">Make more sales</option><option value="engagement">Grow engagement</option></select>
+    <button class="free-demo-generate" type="submit"><span aria-hidden="true">✦</span> Create my free mini plan <span aria-hidden="true">↗</span></button>
+    <p class="free-demo-disclaimer">Instant rule-based suggestions, not a live AI model. Review and personalize before publishing. Your inputs stay in this browser.</p>
+   </form>
+   <div class="free-demo-output" aria-live="polite" aria-atomic="false">
+    <div class="free-demo-output-head"><span class="free-demo-step">02 / YOUR MINI PLAN</span><span id="freeDemoStatus" class="free-demo-state">READY WHEN YOU ARE</span></div>
+    <div id="freeDemoEmpty" class="free-demo-empty"><span class="free-demo-spark" aria-hidden="true">✧</span><h3>A fresh idea is one click away.</h3><p>Your marketing angle, ready-to-edit hook, content idea and next step will appear here.</p><div class="free-demo-ghost"><span></span><span></span><span></span></div></div>
+    <div id="freeDemoResult" class="free-demo-result" hidden>
+      <div class="free-demo-success"><span aria-hidden="true">✓</span> Your mini campaign is ready</div>
+      <h3 id="freeResultTitle"></h3>
+      <div class="free-demo-output-grid">
+       <div class="free-demo-result-card"><span>01 · YOUR ANGLE</span><p id="freeResultAngle"></p></div>
+       <div class="free-demo-result-card"><span>02 · OPENING HOOK</span><p id="freeResultHook"></p></div>
+       <div class="free-demo-result-card"><span>03 · CONTENT IDEA</span><p id="freeResultContent"></p></div>
+       <div class="free-demo-result-card"><span>04 · NEXT STEP</span><p id="freeResultNext"></p></div>
+      </div>
+      <div class="free-demo-result-actions"><button type="button" id="freeCopy" class="free-demo-copy">Copy my mini plan <span aria-hidden="true">⧉</span></button><button type="button" id="freeReset" class="free-demo-reset">Try another idea ↺</button></div>
+      <p id="freeCopyStatus" class="free-demo-copy-status" role="status"></p>
+    </div>
+    <div class="free-demo-upgrade"><span class="free-demo-upgrade-icon" aria-hidden="true">✦</span><div><strong>Like your first idea?</strong><p>The full Campaign Builder helps you develop your audience, messaging and strategy with nine guided steps.</p></div><a href="./#pricing" class="free-demo-upgrade-link">Compare plans ↗</a></div>
+   </div>
+  </div>
+ </div>
 </section>
 <section id="features" class="section-wrap features-section">
  <div class="container">
@@ -550,4 +633,57 @@ for(const r of cards)track.append(makeCard(r,false));
 for(const r of cards)track.append(makeCard(r,true));
 marquee.hidden=false;
 })();
-</script></body></html>
+</script>
+<script>
+(()=>{'use strict';
+const form=document.getElementById('freeIdeaForm');if(!form)return;
+const $=id=>document.getElementById(id);
+const tidy=x=>String(x||'').trim().replace(/\s+/g,' ').replace(/[.!?]+$/,'');
+const lc=x=>x.charAt(0).toLowerCase()+x.slice(1);
+const goalCopy={
+ awareness:{
+ angle:(business,audience)=>'Introduce '+business+' through one relatable moment for '+audience+'. Focus on why it matters before asking people to buy.',
+ hook:(business,audience)=>'What if '+business+' became the thing '+audience+' had been looking for?',
+ content:(business)=>'Create a 15-second introduction showing '+business+' in a real-life setting. Open with a familiar situation, then show the product or service.',
+ next:'Post the video on the channel your audience already uses. Track views and profile visits to see whether the angle earns attention.'},
+ leads:{
+ angle:(business,audience)=>'Show '+audience+' how '+business+' could help, then invite a simple question or consultation.',
+ hook:(business)=>'Curious whether '+business+' is right for you? Here is where to start.',
+ content:(business)=>'Share a short FAQ with three questions people might ask before trying '+business+'. Keep the answers specific and honest.',
+ next:'End with one easy action: “Send us a question.” Track actual inquiries rather than likes alone.'},
+ sales:{
+ angle:(business,audience)=>'Demonstrate the practical value of '+business+' to '+audience+' before presenting a clear purchase next step.',
+ hook:(business)=>'Before you choose '+business+', here are three details worth checking.',
+ content:(business)=>'Make a quick demo or comparison highlighting three real features of '+business+'. Avoid inventing results, savings, or testimonials.',
+ next:'Invite people to view product details or request a quote. Measure clicks or qualified requests instead of assuming a sale.'},
+ engagement:{
+ angle:(business,audience)=>'Start a conversation with '+audience+' using an everyday choice related to '+business+'.',
+ hook:(business)=>'Quick question: what matters most to you when choosing '+business+'?',
+ content:(business)=>'Create a two-option poll or short “this or that” post about '+business+'. Ask one question people can answer in a sentence.',
+ next:'Respond to thoughtful comments and note which questions repeat. Use those responses to shape your next post.'}
+};
+let exportText='';
+form.addEventListener('submit',event=>{
+ event.preventDefault();
+ if(!form.reportValidity())return;
+ const business=tidy($('freeBusiness').value),audience=tidy($('freeAudience').value),goal=$('freeGoal').value;
+ if(!business||!audience||!Object.prototype.hasOwnProperty.call(goalCopy,goal))return;
+ const copy=goalCopy[goal];
+ const angle=copy.angle(business,lc(audience)),hook=copy.hook(business,lc(audience)),content=copy.content(business,lc(audience)),next=copy.next;
+ $('freeResultTitle').textContent='A first campaign idea for '+business;
+ $('freeResultAngle').textContent=angle;
+ $('freeResultHook').textContent=hook;
+ $('freeResultContent').textContent=content;
+ $('freeResultNext').textContent=next;
+ exportText=['TRANWRECKS STUDIO — FREE MINI PLAN','Business: '+business,'Audience: '+audience,'Goal: '+$('freeGoal').selectedOptions[0].text,'','YOUR ANGLE',angle,'','OPENING HOOK',hook,'','CONTENT IDEA',content,'','NEXT STEP',next,'','Draft created by a rule-based preview. Review and edit before use.'].join('\n');
+ $('freeDemoEmpty').hidden=true;$('freeDemoResult').hidden=false;$('freeDemoStatus').textContent='PLAN GENERATED';$('freeCopyStatus').textContent='';
+ $('freeDemoResult').scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'nearest'});
+});
+$('freeCopy').addEventListener('click',async()=>{
+ if(!exportText)return;
+ try{await navigator.clipboard.writeText(exportText);$('freeCopyStatus').textContent='Copied! Your mini plan is ready to paste.';}catch{$('freeCopyStatus').textContent='Copy was blocked by your browser. You can select the text above.';}
+});
+$('freeReset').addEventListener('click',()=>{form.reset();exportText='';$('freeDemoEmpty').hidden=false;$('freeDemoResult').hidden=true;$('freeDemoStatus').textContent='READY WHEN YOU ARE';$('freeCopyStatus').textContent='';$('freeBusiness').focus()});
+})();
+</script>
+</body></html>
