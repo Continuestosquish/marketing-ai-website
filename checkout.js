@@ -1,7 +1,7 @@
 (()=>{'use strict';
 const plans={
 starter:{name:'Starter',cents:499,allowance:3,features:['3 campaign blueprints per month (upon paid feature activation)','Marketing tactics and strategy basics','Performance calculator','10-chapter Marketing Playbook included','30-day Content Calendar Generator included','Marketing Hook Generator included']},
-pro:{name:'Pro',cents:999,allowance:15,features:['15 campaign blueprints per month (upon paid feature activation)','Advanced tactic suggestions','Downloadable strategy reports','10-chapter Marketing Playbook included','30-day Content Calendar Generator included','Marketing Hook Generator included']},
+pro:{name:'Pro',cents:999,allowance:30,features:['30 campaign blueprints per month (upon paid feature activation)','Advanced tactic suggestions','Downloadable strategy reports','10-chapter Marketing Playbook included','30-day Content Calendar Generator included','Marketing Hook Generator included']},
 super:{name:'Super Pro Plus',cents:1599,allowance:null,features:['Unlimited campaign blueprints (upon paid feature activation)','Higher-volume planning','Premium marketing workflow designs','10-chapter Marketing Playbook included','30-day Content Calendar Generator included','Marketing Hook Generator included']}
 };
 const $=id=>document.getElementById(id);
