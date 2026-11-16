@@ -198,6 +198,31 @@ body{background:#fff}
 .membership-choose-pro{background:linear-gradient(110deg,#f5a72c,#ffd05a);border-color:#f5bd48;color:#272218}
 .membership-choose-pro:hover{background:#f7c054}
 @media(max-width:780px){.membership-table-wrap{margin:0 -7px}.membership-table{min-width:670px}.membership-table thead th{padding-top:32px}.membership-table .membership-lead strong{font-size:18px}}
+
+/* Blurred subscription previews. Visual lock only; backend still required for access control. */
+.locked-preview{position:relative;display:block;overflow:hidden;min-height:255px;padding:25px 28px 28px;isolation:isolate}
+.locked-feature-head{position:relative;z-index:1}
+.locked-feature-head .kicker{margin:0 0 7px}
+.locked-feature-head h3{font-size:22px;letter-spacing:-.7px;margin:0 0 6px}
+.locked-feature-head p{font-size:13px;color:#74839a;margin:0}
+.locked-mock{margin-top:21px;filter:blur(5px);opacity:.6;pointer-events:none;user-select:none}
+.locked-mock-search{border:1px solid #d9e3ee;border-radius:10px;padding:13px;background:#f6f9fe;color:#657894;font-size:12px;display:flex;justify-content:space-between;gap:10px}
+.locked-mock-search span{color:#2e4263}
+.locked-mock-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;margin-top:12px}
+.locked-mock-cards>div,.locked-analytics-mock>div{border:1px solid #dbe3ef;background:#fff;border-radius:12px;padding:16px}
+.locked-mock-cards small,.locked-analytics-mock small{display:block;color:#b07c25;font-size:10px;font-weight:800;letter-spacing:.6px}
+.locked-mock-cards strong{display:block;font-size:14px;margin-top:6px}
+.locked-mock-cards p{font-size:11px;color:#77849a;margin:7px 0 0}
+.locked-analytics-mock{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.locked-analytics-mock strong{display:block;font-size:21px;color:#243d64;margin-top:9px}
+.locked-overlay{position:absolute;z-index:2;inset:73px 0 0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;text-align:center;background:linear-gradient(180deg,#ffffff00,#ffffffab 26%,#ffffffcc 80%,#ffffff88);padding:18px;pointer-events:none}
+.locked-overlay>*{pointer-events:auto}
+.locked-overlay .locked-icon{font-size:27px;line-height:1.2;padding:9px;border:1px solid #f5dfb5;border-radius:14px;background:#fff8e9;box-shadow:0 5px 18px #916d2020}
+.locked-overlay strong{font-size:17px;color:#1d2d43}
+.locked-overlay>span:not(.locked-icon){font-size:12px;color:#57677d}
+.locked-overlay .locked-action{margin-top:7px;background:linear-gradient(110deg,#f5a72c,#ffd05a);color:#2b2418;box-shadow:0 7px 20px #e8a0282b}
+.locked-overlay .locked-action:hover{background:linear-gradient(110deg,#e9971e,#ffc43c)}
+@media(max-width:700px){.locked-preview{padding:20px;min-height:320px}.locked-mock-cards{grid-template-columns:1fr 1fr}.locked-mock-cards>div:last-child{display:none}.locked-analytics-mock{grid-template-columns:1fr 1fr}.locked-overlay{inset:86px 0 0}.locked-overlay .locked-action{white-space:normal;margin-top:10px}}
 </style>
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Tranwrecks Studio">
@@ -306,15 +331,24 @@ body{background:#fff}
  </div>
 </section>
 <section class="section-wrap extras-section locked-extras" id="library">
-  <div class="container"><div class="locked-feature">
-    <div class="locked-copy"><span class="kicker">MEMBERSHIP FEATURE</span><h3>Browse all 120 marketing tactics</h3><p>Search, discover and save tactics from the full marketing library.</p><span class="locked-hint">Included in membership plans · Account access coming soon</span></div>
-    <a class="locked-action" href="./checkout.html?source=tactics" aria-label="View plans for 120 marketing tactics"><span aria-hidden="true">🔒</span> View membership plans <span aria-hidden="true">↗</span></a>
-  </div></div></section>
+ <div class="container"><div class="locked-feature locked-preview">
+  <div class="locked-feature-head"><span class="kicker">PRO &amp; SUPER PRO PLUS</span><h3>Browse all 120 marketing tactics</h3><p>Discover campaign ideas, search by category, and save the tactics you like.</p></div>
+  <div class="locked-mock locked-tactics-mock" aria-hidden="true">
+   <div class="locked-mock-search">⌕ &nbsp; Search tactics, channels, objectives... <span>All categories ▾</span></div>
+   <div class="locked-mock-cards"><div><small>TACTIC 01</small><strong>Brand storytelling</strong><p>Connect with your audience through a clear story.</p></div><div><small>TACTIC 02</small><strong>Video marketing</strong><p>Create short content that introduces your product.</p></div><div><small>TACTIC 03</small><strong>Search optimization</strong><p>Help customers discover helpful content.</p></div></div>
+  </div>
+  <div class="locked-overlay"><span class="locked-icon" aria-hidden="true">🔒</span><strong>Unlock the tactic library</strong><span>Included with Pro and Super Pro Plus</span><a class="locked-action" href="./checkout.html?plan=pro">View membership plans <span aria-hidden="true">↗</span></a></div>
+ </div></div>
+</section>
 <section class="section-wrap analytics-section locked-extras" id="analytics">
-  <div class="container"><div class="locked-feature">
-    <div class="locked-copy"><span class="kicker">MEMBERSHIP FEATURE</span><h3>Marketing performance calculator</h3><p>Measure lead costs, acquisition costs, conversion rates and return on ad spend.</p><span class="locked-hint">Included in membership plans · Account access coming soon</span></div>
-    <a class="locked-action" href="./checkout.html?source=analytics" aria-label="View plans for marketing performance calculator"><span aria-hidden="true">🔒</span> View membership plans <span aria-hidden="true">↗</span></a>
-  </div></div></section>
+ <div class="container"><div class="locked-feature locked-preview">
+  <div class="locked-feature-head"><span class="kicker">PRO &amp; SUPER PRO PLUS</span><h3>Marketing performance calculator</h3><p>Explore campaign costs, conversion rates, and estimated return on ad spend.</p></div>
+  <div class="locked-mock locked-analytics-mock" aria-hidden="true">
+   <div><small>AD SPEND</small><strong>$2,500</strong></div><div><small>GENERATED LEADS</small><strong>100</strong></div><div><small>COST PER LEAD</small><strong>$25.00</strong></div><div><small>RETURN ON AD SPEND</small><strong>3.8×</strong></div>
+  </div>
+  <div class="locked-overlay"><span class="locked-icon" aria-hidden="true">🔒</span><strong>Unlock the calculator</strong><span>Included with Pro and Super Pro Plus</span><a class="locked-action" href="./checkout.html?plan=pro">View membership plans <span aria-hidden="true">↗</span></a></div>
+ </div></div>
+</section>
 <section class="reviews-section" id="reviews" aria-labelledby="reviews-title">
  <div class="container">
   <div class="reviews-heading"><div><p class="kicker">YOUR VOICE MATTERS</p><h2 id="reviews-title">Reviews & <em>feedback.</em></h2><p>See how customer feedback could look in our continuously scrolling review showcase.</p></div><span class="reviews-demo-note">DEMO REVIEWS · Fictional examples</span></div>
