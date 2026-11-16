@@ -90,7 +90,7 @@ async function route(req,env,url){
   const p=await stripe(env,'billing_portal/sessions','POST',q);return json({url:p.url});
  }
  if(path==='/api/entitlement'&&method==='GET'){
-  const allowances={starter:3,pro:15,super:50};return json({active:isActive(u),plan:isActive(u)?u.plan:null,monthly_campaign_allowance:isActive(u)?allowances[u.plan]||0:0,playbook:isActive(u),calendar:isActive(u)});
+  const allowances={starter:3,pro:10,super:null};const active=isActive(u);return json({active,plan:active?u.plan:null,monthly_campaign_allowance:active?allowances[u.plan]:0,unlimited_campaigns:active&&u.plan==='super',playbook:active,calendar:active,caption_builder:active&&['pro','super'].includes(u.plan),tactics:active&&['pro','super'].includes(u.plan),calculator:active&&['pro','super'].includes(u.plan),advanced_recommendations:active&&u.plan==='super'});
  }
  return json({error:'Not found'},404);
 }
