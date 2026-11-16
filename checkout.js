@@ -21,6 +21,7 @@ $('demoCheckoutLink').setAttribute('href','./demo-checkout.html?plan='+encodeURI
 $('planName').textContent=p.name;$('allowance').textContent=(p.allowance===null?'Unlimited':p.allowance+' / month');$('planPrice').textContent='$'+(p.cents/100).toFixed(2);
 $('features').replaceChildren();p.features.forEach(s=>{const li=document.createElement('li');li.textContent=s;$('features').appendChild(li)});
 }
+if(!base){const liveBtn=$('checkoutBtn');liveBtn.disabled=true;liveBtn.textContent='Real billing not active yet';liveBtn.style.opacity='.55';liveBtn.style.cursor='not-allowed';}
 $('checkoutBtn').addEventListener('click',async ()=>{
  if(!base){status.textContent='Secure subscription checkout is not active. No payment has been taken. You may use the free development preview below to try the tool without a subscription.';return;}
  const btn=$('checkoutBtn');btn.disabled=true;btn.textContent='Opening Stripe…';
