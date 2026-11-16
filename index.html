@@ -233,6 +233,17 @@ body{background:#fff}
  mask-image:linear-gradient(to bottom,transparent 0%,transparent 24%,#0005 51%,#000d 79%,#000 100%);
 }
 #library .locked-overlay{background:linear-gradient(to bottom,transparent 0%,#ffffff18 36%,#ffffff91 73%,#ffffffd6 100%)}
+
+/* Center both locked membership previews without changing the gradual blur. */
+#library .locked-feature-head,#analytics .locked-feature-head{text-align:center}
+#library .locked-feature-head .kicker,#analytics .locked-feature-head .kicker{justify-content:center}
+#library .locked-feature-head p,#analytics .locked-feature-head p{max-width:620px;margin:0 auto}
+#library .locked-mock,#analytics .locked-mock{max-width:900px;margin:21px auto 0}
+#library .locked-mock-search{justify-content:center;align-items:center;flex-wrap:wrap;text-align:center}
+#library .locked-mock-search span{margin-left:10px}
+#library .locked-mock-cards>div,#analytics .locked-analytics-mock>div{text-align:center}
+#library .locked-overlay,#analytics .locked-overlay{left:0;right:0;align-items:center;text-align:center}
+#library .locked-overlay .locked-action,#analytics .locked-overlay .locked-action{justify-content:center}
 </style>
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Tranwrecks Studio">
