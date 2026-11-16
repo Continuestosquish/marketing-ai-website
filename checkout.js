@@ -17,7 +17,7 @@ $('demoLink').setAttribute('href',demo);
 function display(){
 const p=plans[selected],list=$('options');list.replaceChildren();
 for(const [id,v] of Object.entries(plans)){const b=document.createElement('button');b.type='button';b.className='option';b.setAttribute('aria-pressed',String(id===selected));b.innerHTML='<span><strong>'+v.name+'</strong><small>'+v.allowance+' campaign blueprints / month (after activation)</small></span><span class="price">$'+(v.cents/100).toFixed(2)+'</span>';b.addEventListener('click',()=>{selected=id;history.replaceState(null,'','?plan='+encodeURIComponent(id));display()});list.appendChild(b);}
-$('planName').textContent=p.name;$('allowance').textContent=p.allowance+' / month';$('planPrice').textContent='$'+(p.cents/100).toFixed(2);
+$('planName').textContent=p.name;$('allowance').textContent=(p.allowance===null?'Unlimited':p.allowance+' / month');$('planPrice').textContent='$'+(p.cents/100).toFixed(2);
 $('features').replaceChildren();p.features.forEach(s=>{const li=document.createElement('li');li.textContent=s;$('features').appendChild(li)});
 }
 $('checkoutBtn').addEventListener('click',async ()=>{
