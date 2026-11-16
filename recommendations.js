@@ -73,7 +73,7 @@ $('recommendChannel')?.addEventListener('change',render);
 $('recommendedGrid')?.addEventListener('click',e=>{
  const button=e.target.closest('[data-recommend]');if(!button)return;
  saveChoice(button.dataset.recommend);
- location.assign('./checkout.html?next=campaign&source=recommendation');
+ location.assign('./campaign.html?source=recommendation');
 });
 render();
 })();
