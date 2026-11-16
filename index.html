@@ -223,6 +223,16 @@ body{background:#fff}
 .locked-overlay .locked-action{margin-top:7px;background:linear-gradient(110deg,#f5a72c,#ffd05a);color:#2b2418;box-shadow:0 7px 20px #e8a0282b}
 .locked-overlay .locked-action:hover{background:linear-gradient(110deg,#e9971e,#ffc43c)}
 @media(max-width:700px){.locked-preview{padding:20px;min-height:320px}.locked-mock-cards{grid-template-columns:1fr 1fr}.locked-mock-cards>div:last-child{display:none}.locked-analytics-mock{grid-template-columns:1fr 1fr}.locked-overlay{inset:86px 0 0}.locked-overlay .locked-action{white-space:normal;margin-top:10px}}
+
+/* Tactics preview: clear at top, progressively obscured near the bottom. */
+#library .locked-tactics-mock{position:relative;filter:none;opacity:1;isolation:isolate}
+#library .locked-tactics-mock::after{
+ content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+ -webkit-backdrop-filter:blur(9px);backdrop-filter:blur(9px);
+ -webkit-mask-image:linear-gradient(to bottom,transparent 0%,transparent 24%,#0005 51%,#000d 79%,#000 100%);
+ mask-image:linear-gradient(to bottom,transparent 0%,transparent 24%,#0005 51%,#000d 79%,#000 100%);
+}
+#library .locked-overlay{background:linear-gradient(to bottom,transparent 0%,#ffffff18 36%,#ffffff91 73%,#ffffffd6 100%)}
 </style>
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Tranwrecks Studio">
