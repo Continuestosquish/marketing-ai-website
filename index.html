@@ -166,6 +166,38 @@ body{background:#fff}
 /* Smooth, continuous loop of duplicated demo review cards. */
 @keyframes reviewsScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @media(prefers-reduced-motion:reduce){.reviews-marquee-track{animation:none;will-change:auto}.reviews-marquee{overflow-x:auto;mask-image:none;-webkit-mask-image:none}}
+
+/* Clear plan-comparison chart, inspired by familiar retail membership tables */
+.membership-table-wrap{overflow-x:auto;overflow-y:visible;border:1px solid #e2e8f1;border-radius:18px;background:#fff;box-shadow:0 15px 42px #1e2e420b}
+.membership-table{border-collapse:separate;border-spacing:0;width:100%;min-width:680px;table-layout:fixed;color:#223044}
+.membership-table col.membership-label-col{width:34%}
+.membership-table col.membership-plan-col{width:22%}
+.membership-table th,.membership-table td{padding:16px 14px;border-bottom:1px solid #e4e9f0}
+.membership-table thead th{vertical-align:bottom;padding:22px 12px 20px;text-align:center}
+.membership-table thead th.membership-lead{text-align:left;padding-left:23px}
+.membership-lead span{font-size:10px;letter-spacing:1.6px;color:#ba7c1c;font-weight:900;display:block;margin-bottom:13px}
+.membership-lead strong{font-size:22px;display:block;line-height:1.3}
+.membership-lead small{display:block;font-size:11px;color:#8995a6;margin-top:11px;font-weight:500}
+.membership-plan-head{min-height:124px;display:flex;align-items:center;flex-direction:column;justify-content:end;position:relative}
+.membership-tier{font-size:11px;font-weight:900;letter-spacing:1px;color:#ba7c1c}
+.membership-plan-head>strong{font-size:clamp(25px,2.5vw,34px);font-weight:900;letter-spacing:-1.5px;color:#1b2b44;margin-top:7px;white-space:nowrap}
+.membership-plan-head>strong small{font-size:11px;color:#697991;letter-spacing:0;font-weight:600}
+.membership-plan-head p{font-size:11px;color:#728096;margin:6px 0 0;text-align:center;font-weight:500}
+.membership-table .membership-featured{background:#e7f4ff}
+.membership-best{position:absolute;top:-20px;left:50%;transform:translateX(-50%);white-space:nowrap;padding:5px 11px;background:#246cf3;color:#fff;font-size:10px;letter-spacing:.3px;border-radius:7px;font-weight:800}
+.membership-table tbody th{text-align:left;font-size:13px;font-weight:700;padding-left:23px}
+.membership-table tbody th small{display:block;color:#8a98aa;font-size:11px;font-weight:500;margin-top:2px}
+.membership-table tbody td{text-align:center;vertical-align:middle}
+.membership-value{font-size:15px;font-weight:900;color:#1a3558}
+.membership-check{width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:#246cf3;color:#fff;font-size:14px;font-weight:900}
+.membership-dash{font-size:21px;color:#8193a7}
+.membership-table tfoot td{padding:23px 10px;border-bottom:0;text-align:center}
+.membership-table .membership-cta-label{text-align:left;font-size:12px;padding-left:23px;font-weight:800}
+.membership-choose{border:1px solid #cbd6e5;display:inline-flex;justify-content:center;gap:7px;padding:11px 12px;border-radius:10px;color:#233952;background:#fff;font-size:12px;font-weight:850;white-space:nowrap}
+.membership-choose:hover{background:#fff2cf;border-color:#eeb74d}
+.membership-choose-pro{background:linear-gradient(110deg,#f5a72c,#ffd05a);border-color:#f5bd48;color:#272218}
+.membership-choose-pro:hover{background:#f7c054}
+@media(max-width:780px){.membership-table-wrap{margin:0 -7px}.membership-table{min-width:670px}.membership-table thead th{padding-top:32px}.membership-table .membership-lead strong{font-size:18px}}
 </style>
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Tranwrecks Studio">
@@ -239,12 +271,37 @@ body{background:#fff}
 </div>
 </section>
 <section id="pricing" class="section-wrap pricing-section">
- <div class="container"><div class="center-intro"><p class="kicker">SIMPLE MEMBERSHIPS</p><h2>Pick your pace.</h2><p>All plans include the 10-chapter Marketing Playbook, 30-Day Content Calendar Generator, and Marketing Hook Generator.</p></div>
- <div class="pricing-grid">
-  <article class="price-card"><span class="plan-title">STARTER</span><div class="price-line">$4.99 <small>/ month</small></div><p>For personal projects and occasional launches.</p><div class="pricing-divider"></div><ul><li>3 campaign blueprints / month</li><li>Marketing Playbook</li><li>30-Day Content Calendar</li><li>Marketing Hook Generator</li><li>Marketing tactic library</li></ul><a href="./checkout.html?plan=starter" class="btn btn-plan">Explore Starter ↗</a></article>
-  <article class="price-card price-highlight"><span class="popular">MOST POPULAR</span><span class="plan-title">PRO</span><div class="price-line">$9.99 <small>/ month</small></div><p>For creators and businesses planning regularly.</p><div class="pricing-divider"></div><ul><li>15 campaign blueprints / month</li><li>Marketing Playbook</li><li>30-Day Content Calendar</li><li>Marketing Hook Generator</li><li>Smart tactic recommendations</li></ul><a href="./checkout.html?plan=pro" class="btn btn-primary btn-plan">Explore Pro ↗</a></article>
-  <article class="price-card"><span class="plan-title">SUPER PRO PLUS</span><div class="price-line">$15.99 <small>/ month</small></div><p>For frequent planning and bigger creative workflows.</p><div class="pricing-divider"></div><ul><li>Unlimited campaign blueprints</li><li>Marketing Playbook</li><li>30-Day Content Calendar</li><li>Marketing Hook Generator</li><li>Higher-volume planning</li></ul><a href="./checkout.html?plan=super" class="btn btn-plan">Explore Super Pro ↗</a></article>
- </div><p class="pricing-note">Membership pricing is a preview. Secure Stripe subscription billing and paid access are not active yet. No payment is collected on this site.</p></div>
+ <div class="container">
+  <div class="center-intro"><p class="kicker">SIMPLE MEMBERSHIPS</p><h2>Find the right plan.</h2><p>Compare what each membership includes — from your first campaign to unlimited planning.</p></div>
+  <div class="membership-table-wrap" tabindex="0" role="region" aria-label="Membership plan comparison; scroll horizontally on small screens">
+   <table class="membership-table">
+    <colgroup><col class="membership-label-col"><col class="membership-plan-col"><col class="membership-plan-col"><col class="membership-plan-col"></colgroup>
+    <thead>
+     <tr><th scope="col" class="membership-lead"><span>COMPARE MEMBERSHIPS</span><strong>Everything, at a glance.</strong><small>All prices in USD · billed monthly</small></th>
+      <th scope="col"><div class="membership-plan-head"><span class="membership-tier">STARTER</span><strong>$4.99<small>/mo</small></strong><p>For personal projects</p></div></th>
+      <th scope="col" class="membership-featured"><div class="membership-plan-head"><span class="membership-best">POPULAR CHOICE</span><span class="membership-tier">PRO</span><strong>$9.99<small>/mo</small></strong><p>For regular creators</p></div></th>
+      <th scope="col"><div class="membership-plan-head"><span class="membership-tier">SUPER PRO PLUS</span><strong>$15.99<small>/mo</small></strong><p>For ambitious projects</p></div></th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr><th scope="row">Campaign blueprints <small>Each month</small></th><td><strong class="membership-value">3</strong></td><td class="membership-featured"><strong class="membership-value">30</strong></td><td><strong class="membership-value">Unlimited</strong></td></tr>
+     <tr><th scope="row">Marketing Hook Generator</th><td><span class="membership-check" aria-label="Included">✓</span></td><td class="membership-featured"><span class="membership-check" aria-label="Included">✓</span></td><td><span class="membership-check" aria-label="Included">✓</span></td></tr>
+     <tr><th scope="row">30-Day Content Calendar</th><td><span class="membership-check" aria-label="Included">✓</span></td><td class="membership-featured"><span class="membership-check" aria-label="Included">✓</span></td><td><span class="membership-check" aria-label="Included">✓</span></td></tr>
+     <tr><th scope="row">10-chapter Marketing Playbook</th><td><span class="membership-check" aria-label="Included">✓</span></td><td class="membership-featured"><span class="membership-check" aria-label="Included">✓</span></td><td><span class="membership-check" aria-label="Included">✓</span></td></tr>
+     <tr><th scope="row">Marketing tactic library</th><td><span class="membership-check" aria-label="Included">✓</span></td><td class="membership-featured"><span class="membership-check" aria-label="Included">✓</span></td><td><span class="membership-check" aria-label="Included">✓</span></td></tr>
+     <tr><th scope="row">Performance calculator</th><td><span class="membership-check" aria-label="Included">✓</span></td><td class="membership-featured"><span class="membership-check" aria-label="Included">✓</span></td><td><span class="membership-check" aria-label="Included">✓</span></td></tr>
+     <tr><th scope="row">Advanced tactic suggestions <small>Planned paid feature</small></th><td><span class="membership-dash" aria-label="Not included">—</span></td><td class="membership-featured"><span class="membership-check" aria-label="Included">✓</span></td><td><span class="membership-check" aria-label="Included">✓</span></td></tr>
+     <tr><th scope="row">Downloadable strategy reports <small>Planned paid feature</small></th><td><span class="membership-dash" aria-label="Not included">—</span></td><td class="membership-featured"><span class="membership-check" aria-label="Included">✓</span></td><td><span class="membership-check" aria-label="Included">✓</span></td></tr>
+    </tbody>
+    <tfoot><tr><td class="membership-cta-label">Explore your membership</td>
+      <td><a class="membership-choose" href="./checkout.html?plan=starter">View Starter <span aria-hidden="true">↗</span></a></td>
+      <td class="membership-featured"><a class="membership-choose membership-choose-pro" href="./checkout.html?plan=pro">View Pro <span aria-hidden="true">↗</span></a></td>
+      <td><a class="membership-choose" href="./checkout.html?plan=super">View Super Pro <span aria-hidden="true">↗</span></a></td>
+    </tr></tfoot>
+   </table>
+  </div>
+  <p class="pricing-note">Membership plans are a preview. Secure Stripe billing and automatic paid access are not yet active. No payments are collected on this website.</p>
+ </div>
 </section>
 <section class="section-wrap extras-section locked-extras" id="library">
   <div class="container"><div class="locked-feature">
