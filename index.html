@@ -2,7 +2,7 @@
 <html lang="en">
 <head><link rel="icon" type="image/svg+xml" href="./favicon.svg?v=1">
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#f8f9fc">
+<meta name="theme-color" content="#ffffff">
 <meta name="description" content="Tranwrecks Studio: a simple creative marketing workspace for campaigns, content calendars and practical tactics.">
 <title>Tranwrecks Studio — Random Digital Stuff</title>
 <style>
@@ -289,6 +289,123 @@ body{background:#fff}
 .free-demo-upgrade-link{font-size:11px;font-weight:850;white-space:nowrap;color:#855a17;text-decoration:underline;text-underline-offset:3px}
 @media(max-width:870px){.free-demo-layout{grid-template-columns:1fr}.free-demo-intro{align-items:start}.free-demo-output{min-height:350px}}
 @media(max-width:600px){.free-demo-section{padding:58px 0}.free-demo-intro{display:block}.free-demo-pill{display:inline-block;margin-top:18px}.free-demo-form,.free-demo-output{padding:22px}.free-demo-output-grid{grid-template-columns:1fr}.free-demo-upgrade{flex-wrap:wrap}.free-demo-upgrade-link{margin-left:48px}}
+
+/* Clean, approachable workspace refresh: airy search-first visual language. */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+:root{--ink:#202124;--muted:#5f6368;--light:#f8fafd;--line:#e6e9ef;--orange:#e8a136;--navy:#101d34}
+html{scroll-padding-top:72px}
+body{font-family:Inter,'DM Sans',Arial,sans-serif;color:#202124;background:#fff;line-height:1.65}
+h1,h2,h3{font-family:Inter,'DM Sans',sans-serif;letter-spacing:-.055em}
+h2 em{font-family:Inter,'DM Sans',sans-serif;font-weight:700;font-style:normal;color:#e7a12b}
+.container{width:min(1160px,calc(100% - 52px))}
+.site-header{height:76px;border-bottom:1px solid #edf0f4;background:#fff;box-shadow:0 1px 3px #1e2c4005;position:sticky;top:0;z-index:20}
+.header-row{gap:29px}
+.brand{min-width:200px}
+.brand-name{font-family:Inter,sans-serif;font-size:19px;letter-spacing:-1px}
+.brand-name span{color:#4285f4}
+.brand-tagline{font-weight:500;letter-spacing:.9px;font-size:9px}
+.nav{gap:25px}
+.nav a,.header-signin{font-size:12px;color:#5f6368;font-weight:600}
+.nav a:hover,.header-signin:hover{color:#1a73e8}
+.btn,.membership-choose,.locked-action{border-radius:24px}
+.btn-primary{background:#1a73e8;color:#fff;box-shadow:none}
+.btn-primary:hover{background:#155fc1}
+.btn-secondary{background:#f4f7fc;border:1px solid #eef1f5;color:#283a57}
+.btn-secondary:hover{background:#eaf1fd}
+.mobile-menu{border-radius:14px}
+.hero{min-height:575px;gap:48px;padding-top:85px;padding-bottom:80px;grid-template-columns:1.03fr .97fr}
+.hero:before{background:radial-gradient(circle,#e9f2ff 0%,#fff0 72%);right:-75px}
+.eyebrow,.kicker{color:#1a73e8;letter-spacing:1.1px;font-size:10px}
+.mini-dot{background:#34a853;box-shadow:0 0 0 5px #e5f5ea}
+.hero h1{font-size:clamp(46px,5vw,70px);letter-spacing:-.065em;line-height:1.11;white-space:normal}
+.hero h1 span{color:#4285f4}
+.hero-desc{color:#667085;font-size:16px;line-height:1.85}
+.hero-mini{color:#7c899a}
+.hero-preview{background:#fff;color:#26344a;border:1px solid #e4e9f3;box-shadow:0 24px 65px #31578513;border-radius:24px;min-height:450px}
+.preview-window{background:#f8fafd;border-bottom:1px solid #e8edf6;color:#63738c}
+.preview-light{background:#fbbc05}
+.preview-right{color:#8996aa}
+.preview-main{padding:35px}
+.preview-label,.step-num,.preview-progress-text b{color:#1a73e8}
+.preview-main h2{color:#243550;font-size:29px}
+.preview-main>p{color:#8190a4}
+.preview-steps>div{background:#f9fbff;border:1px solid #e5ebf3;color:#2d3e57}
+.preview-steps>div small{color:#8b98a9}
+.preview-steps>div b{color:#30435e}
+.preview-steps .preview-current{background:#eaf2ff!important;border-color:#c8dafa!important}
+.preview-check{color:#34a853}
+.preview-progress{background:#e8eef8}
+.preview-progress span{background:linear-gradient(90deg,#4285f4,#34a853)}
+.preview-progress-text{color:#8d9aad}
+.free-demo-section{background:#f8fafd;border-top:1px solid #edf1f7;border-bottom:1px solid #edf1f7;padding:85px 0}
+.free-demo-intro{align-items:center}
+.free-demo-intro h2{font-size:clamp(32px,4vw,48px)}
+.free-demo-pill{background:#eaf2ff;border:1px solid #d6e5fb;color:#2870ce}
+.free-demo-form,.free-demo-output{border:1px solid #e8ebf1;border-radius:23px;box-shadow:0 7px 30px #29476c0b}
+.free-demo-step{color:#1a73e8}
+.free-demo-form input,.free-demo-form select{border-radius:22px;background:#fff;border:1px solid #dadfe7;min-height:48px;padding:12px 17px;box-shadow:0 1px 4px #2033540b}
+.free-demo-form input:focus,.free-demo-form select:focus{border-color:#4285f4;box-shadow:0 0 0 4px #4285f426}
+.free-demo-generate{background:#1a73e8;color:#fff;border-radius:24px;box-shadow:none;min-height:50px}
+.free-demo-generate:hover{background:#155fc1}
+.free-demo-spark{background:#e8f0fe;color:#4285f4}
+.free-demo-result-card{background:#f8fbff;border-color:#e5eaf4;border-radius:16px}
+.free-demo-result-card span{color:#3577d5}
+.free-demo-copy{background:#1a73e8;border-radius:24px}
+.free-demo-copy:hover{background:#155fc1}
+.free-demo-upgrade-icon{background:#e8f0fe;color:#4285f4}
+.free-demo-upgrade-link{color:#1a73e8}
+.free-demo-success{color:#188038;background:#e6f4ea}
+.features-section{background:#fff}
+.section-intro h2,.center-intro h2{letter-spacing:-.055em}
+.feature-card{border:1px solid #e7ebf2;border-radius:22px;box-shadow:0 4px 16px #263b5c08;transition:box-shadow .2s,transform .2s}
+.feature-card:hover{box-shadow:0 12px 32px #263b5c16;transform:translateY(-3px);border-color:#d5e2f5}
+.feature-wide{background:linear-gradient(130deg,#eef5ff,#fff 72%);border-color:#dce9fa}
+.feature-icon,.feature-card:nth-child(2) .feature-icon,.feature-card:nth-child(3) .feature-icon,.feature-card:nth-child(4) .feature-icon,.feature-card:nth-child(5) .feature-icon{background:#e8f0fe;color:#1a73e8}
+.feature-card:nth-child(3) .feature-icon{background:#fef7e0;color:#b68110}
+.feature-card:nth-child(4) .feature-icon{background:#e6f4ea;color:#188038}
+.feature-card:nth-child(5) .feature-icon{background:#fce8e6;color:#c5221f}
+.feature-meta,.text-link,.plan-title,.benefit-overline,.rec-kicker{color:#1a73e8}
+.feature-art span:nth-child(2){background:#fbbc05}
+.feature-art span:nth-child(3){background:#ea4335}
+.feature-art span:nth-child(4){background:#34a853}
+.recommend-section{background:#f8fafd}
+.recommend-card,.price-card{border-radius:20px;border-color:#e5eaf2}
+.recommend-section .rec-apply{background:#1a73e8;border-color:#1a73e8;border-radius:18px}
+.recommend-section .rec-apply:hover{background:#155fc1}
+.showcase-books{background:#fff}
+.mock-book{background:linear-gradient(150deg,#1d4588,#10264c)}
+.pricing-section{background:#fff}
+.membership-table-wrap{border-radius:22px;border:1px solid #e8edf4;box-shadow:0 8px 28px #2543610a}
+.membership-table .membership-featured{background:#edf5ff}
+.membership-best{background:#1a73e8}
+.membership-check{background:#1a73e8}
+.membership-lead span{color:#1a73e8}
+.membership-tier{color:#1a73e8}
+.membership-choose{border-radius:20px}
+.membership-choose-pro{background:#1a73e8;color:#fff;border-color:#1a73e8}
+.membership-choose-pro:hover{background:#155fc1}
+.locked-extras,.locked-extras.analytics-section{background:#f8fafd}
+.locked-feature{border-radius:22px;border-color:#e5eaf2}
+.locked-overlay .locked-action{background:#1a73e8;color:#fff;border-radius:24px;box-shadow:none}
+.locked-overlay .locked-action:hover{background:#155fc1}
+.locked-icon{border-color:#dae7f8!important;background:#f5f9ff!important}
+.reviews-section{background:#fff}
+.review-example,.review-preview-card{border-radius:20px}
+.review-stars{color:#fbbc04}
+.review-avatar{background:#e8f0fe;color:#1a73e8}
+.review-editor,.review-preview-panel{border-radius:22px}
+.review-preview-btn{background:#1a73e8;color:#fff;border-radius:24px}
+.review-copy-btn{background:#1a73e8;border-radius:24px}
+.cta-section{background:#f6f9fe;border-top:1px solid #e9eef6}
+.cta-content .kicker{color:#1a73e8}
+.cta-section .btn-white{background:#1a73e8;color:#fff;border-radius:24px}
+.cta-section .btn-white:hover{background:#155fc1}
+.site-footer{background:#101d34}
+.footer-brand span{color:#fbbc04}
+.footer-links a:hover{color:#8ab4f8}
+@media(max-width:1040px){.header-row{gap:18px}.nav{gap:13px}}
+@media(max-width:780px){.site-header{height:72px}.hero{padding-top:55px;gap:24px}.hero-preview{min-height:400px}.free-demo-section{padding:64px 0}}
+@media(max-width:540px){.container{width:calc(100% - 34px)}.hero h1{font-size:43px}.hero-preview{border-radius:20px}.free-demo-form,.free-demo-output{border-radius:20px}}
 </style>
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Tranwrecks Studio">
@@ -320,7 +437,7 @@ body{background:#fff}
  <div class="eyebrow"><span class="mini-dot"></span> YOUR CREATIVE MARKETING WORKSPACE</div>
  <h1 id="hero-title">Good ideas.<br><span>Better marketing.</span></h1>
  <p class="hero-desc">From the first spark to the final plan. Build campaigns, find smart tactics, and organize your content without the overwhelm.</p>
- <div class="hero-buttons"><a class="btn btn-primary" href="./checkout.html?next=campaign">Create a campaign <span aria-hidden="true">↗</span></a><a class="btn btn-secondary" href="#try-free">Try free demo <span aria-hidden="true">↓</span></a></div>
+ <div class="hero-buttons"><a class="btn btn-primary" href="#try-free">Try it free <span aria-hidden="true">↗</span></a><a class="btn btn-secondary" href="#features">Explore tools <span aria-hidden="true">↓</span></a></div>
  <div class="hero-mini"><span><b>120</b> practical tactics</span><i></i><span><b>30-day</b> content planning</span><i></i><span><b>10</b> book chapters</span></div>
  </div>
  <div class="hero-preview" aria-label="Campaign planning example">
