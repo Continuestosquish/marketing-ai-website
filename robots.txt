@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Account, checkout and demo pages hold no public content.
+Disallow: /login.html
+Disallow: /account.html
+Disallow: /checkout.html
+Disallow: /demo-checkout.html
+Disallow: /demo-membership.html
+
+Sitemap: https://tranwrecks.com/sitemap.xml
