@@ -1,8 +1,8 @@
 (()=>{'use strict';
 const plans={
-starter:{name:'Starter',cents:499,allowance:3,features:['3 campaign blueprints per month (upon paid feature activation)','Marketing tactics and strategy basics','Performance calculator','10-chapter Marketing Playbook included','30-day Content Calendar Generator included','Marketing Hook Generator included','Caption & Hashtag Builder included']},
-pro:{name:'Pro',cents:999,allowance:10,features:['10 campaign blueprints per month (upon paid feature activation)','Advanced tactic suggestions','Downloadable strategy reports','10-chapter Marketing Playbook included','30-day Content Calendar Generator included','Marketing Hook Generator included','Caption & Hashtag Builder included']},
-super:{name:'Super Pro Plus',cents:1599,allowance:null,features:['Unlimited campaign blueprints (upon paid feature activation)','Higher-volume planning','Premium marketing workflow designs','10-chapter Marketing Playbook included','30-day Content Calendar Generator included','Marketing Hook Generator included','Caption & Hashtag Builder included']}
+starter:{name:'Starter',cents:499,allowance:3,features:['3 campaign blueprints per month (after paid activation)','Marketing Hook Generator','30-Day Content Calendar Generator','10-chapter Marketing Playbook']},
+pro:{name:'Pro',cents:999,allowance:10,features:['Everything in Starter','10 campaign blueprints per month (after paid activation)','Caption & Hashtag Builder','Marketing tactic library','Performance calculator']},
+super:{name:'Super Pro Plus',cents:1599,allowance:null,features:['Everything in Pro','Unlimited campaign blueprints (after paid activation)','Advanced tactic suggestions (planned)','Downloadable strategy reports (planned)']}
 };
 const $=id=>document.getElementById(id);
 const params=new URLSearchParams(location.search);
